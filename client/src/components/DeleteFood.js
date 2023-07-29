@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 export const action = async (event, id) => {
     event.preventDefault()
     try {
-      await axios.delete(`/api/v1/glucose/${id}`);
+      await axios.delete(`/api/v1/food/${id}`);
       toast.success('Record Deleted');
       window.location.reload()
     } catch (error) {
@@ -15,18 +15,18 @@ export const action = async (event, id) => {
     }
 }
 
-function Delete(props) {
+function DeleteFood(props) {
     const id = props.id
     const handleDelete = (event) => {
         action(event, id)
     }
     return (
-        <>
-        <Button variant="danger" onClick={handleDelete}>
-        Delete
-        </Button>
-        </>
+    <>
+    <Button variant="danger" onClick={handleDelete}>
+    Delete
+    </Button>
+    </>
     )
 }
 
-export default Delete
+export default DeleteFood

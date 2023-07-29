@@ -62,16 +62,7 @@ function BGL() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  // const handleEdit = (rowId) => {
-  //   console.log('Edit row with id:', rowId)
-  // }
-
-  // const handleDelete = (rowId) => {
-  //   console.log('Delete row with id:', rowId)
-  // }
-
+  }
 
     return (
         <>
@@ -148,8 +139,6 @@ function BGL() {
           </Button>       
         </Form>
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
       </Modal>
         </div>  
               

@@ -113,3 +113,16 @@
 .dropdown {
   margin-top: 5px;
 }
+
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+.scroll {
+  margin:5px;
+  padding:5px;
+  height: 250px;
+  overflow: auto;
+  text-align:justify;
+}

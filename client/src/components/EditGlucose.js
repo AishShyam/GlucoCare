@@ -41,7 +41,7 @@ function EditGlucose(props) {
         </Button>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Blood Glucose</Modal.Title>
+          <Modal.Title>Edit Blood Glucose</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form method='post' onSubmit={handleEditSubmit}>
@@ -78,8 +78,6 @@ function EditGlucose(props) {
           </Button>       
         </Form>
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
       </Modal>
         </>
     )

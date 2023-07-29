@@ -8,6 +8,8 @@ import ExcerciseLogo from '../assets/stretching-exercises.png'
 import EmergencyLogo from '../assets/emergency.png'
 import CommunityLogo from '../assets/discussion.png';
 import NotepadLogo from '../assets/notepad.png'
+import FoodLogo from '../assets/cutlery.png'
+import LabLogo from '../assets/blood-test.png'
 
 function Sidebar() {
     const navigate = useNavigate()
@@ -30,14 +32,6 @@ function Sidebar() {
                             Home
                         </NavText>
                     </NavItem>
-                    {/* <NavItem eventKey="charts">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
-                        </NavIcon>
-                        <NavText>
-                            Charts
-                        </NavText>
-                    </NavItem> */}
                     <NavItem eventKey="bgl">
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
@@ -63,6 +57,24 @@ function Sidebar() {
                         </NavIcon>
                         <NavText>
                             Exercise
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="food">
+                        <NavIcon>
+                            {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
+                            <img src={FoodLogo} width="30px" alt=""/>
+                        </NavIcon>
+                        <NavText>
+                            Food
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="lab">
+                        <NavIcon>
+                            {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
+                            <img src={LabLogo} width="30px" alt=""/>
+                        </NavIcon>
+                        <NavText>
+                            Lab
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="emergency">
