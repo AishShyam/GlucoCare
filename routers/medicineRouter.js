@@ -5,11 +5,13 @@ import {
     createMedicineValue,
     getMedicineValue,
     updateMedicineValue,
-    deleteMedicineValue
+    deleteMedicineValue,
+    getLatestMedicineValue
 } from '../controllers/medicineController.js'
 import { validateMedicineInput, validateMedicineIdParam } from '../middleware/validationMiddleware.js'
 
 router.get('/', getAllMedicineValue)
+router.get('/latest', getLatestMedicineValue)
 router.post('/', validateMedicineInput, createMedicineValue)
 router.get('/:id', validateMedicineIdParam, getMedicineValue)
 router.patch('/:id', validateMedicineInput, validateMedicineIdParam, updateMedicineValue)

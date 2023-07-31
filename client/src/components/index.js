@@ -1,5 +1,4 @@
 export { default as BGL } from './BGL';
-export { default as Chart } from './Chart';
 export { default as Community } from './Community';
 export { default as Emergency } from './Emergency';
 export { default as Exercise } from './Exercise';

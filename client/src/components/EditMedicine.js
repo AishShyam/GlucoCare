@@ -4,6 +4,8 @@ import { toast } from 'react-toastify'
 import Modal from 'react-bootstrap/Modal'
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form'
+import EditLogo from '../assets/edit.png'
+
 
 export const action = async (event, id) => {
     event.preventDefault()
@@ -36,8 +38,8 @@ function EditMedicine(props) {
     }
     return (
         <>
-        <Button variant="primary" onClick={handleShow}>
-        Edit
+        <Button className="button" onClick={handleShow}>
+        <img src={EditLogo} width="18px" alt=""/>
         </Button>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

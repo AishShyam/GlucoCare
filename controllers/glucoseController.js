@@ -6,6 +6,11 @@ export const getAllGlucoseValue = async (req, res) => {
     res.status(200).json({ glucoseData })
 }
 
+export const getLatestGlucoseValue = async (req, res) => {
+    const glucoseData = await Glucose.find({createdBy: req.user.userId}).sort({ createdAt: -1 }).limit(1)
+    res.status(200).json({ glucoseData })
+}
+
 export const createGlucoseValue = async (req,res) => {
     req.body.createdBy = req.user.userId
     const glucoseValue = await Glucose.create(req.body)

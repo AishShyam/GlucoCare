@@ -6,6 +6,11 @@ export const getAllFoodValue = async (req, res) => {
     res.status(200).json({ foodData })
 }
 
+export const getLatestFoodValue = async (req, res) => {
+    const foodData = await Food.find({createdBy: req.user.userId}).sort({ createdAt: -1 }).limit(1)
+    res.status(200).json({ foodData })
+}
+
 export const createFoodValue = async (req,res) => {
     req.body.createdBy = req.user.userId
     const foodValue = await Food.create(req.body)

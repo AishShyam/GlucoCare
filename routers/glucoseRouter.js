@@ -2,6 +2,7 @@ import express from 'express'
 const router = express.Router()
 import {
     getAllGlucoseValue,
+    getLatestGlucoseValue,
     createGlucoseValue,
     getGlucoseValue,
     updateGlucoseValue,
@@ -10,6 +11,7 @@ import {
 import { validateGlucoseInput, validateIdParam } from '../middleware/validationMiddleware.js'
 
 router.get('/', getAllGlucoseValue)
+router.get('/latest', getLatestGlucoseValue)
 router.post('/', validateGlucoseInput,createGlucoseValue)
 router.get('/:id', validateIdParam, getGlucoseValue)
 router.patch('/:id', validateGlucoseInput,validateIdParam, updateGlucoseValue)

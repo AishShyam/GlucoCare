@@ -1,5 +1,5 @@
-import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   BGL,
   Community,
@@ -16,186 +16,98 @@ import {
   Register,
   Food,
   Lab,
-  Landing
-  
-} from './components'
-import {action as registerAction} from './components/Register'
-import {action as loginAction} from './components/Login'
-import {action as glucoseAction} from './components/BGL'
-import {action as medicineAction} from './components/Medicine'
-import {action as exerciseAction} from './components/Exercise'
-import {action as foodAction} from './components/Food'
+} from "./components";
+import { action as registerAction } from "./components/Register";
+import { action as loginAction } from "./components/Login";
+import { action as glucoseAction } from "./components/BGL";
+import { action as medicineAction } from "./components/Medicine";
+import { action as exerciseAction } from "./components/Exercise";
+import { action as foodAction } from "./components/Food";
 
-
-import {loader as dashboardLoader} from './components/Dashboard'
-import {loader as glucoseLoader} from './components/BGL'
-import {loader as medicineLoader} from './components/Medicine'
-import {loader as exerciseLoader} from './components/Exercise'
-import {loader as foodLoader} from './components/Food'
-
-
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <Home />,
-//     children: [
-//       {
-//         index: true,
-//         element: <Dashboard />,
-//         loader: dashboardLoader
-//       },
-//       // {
-//       //   path: 'dashboard',
-//       //   loader: dashboardLoader,
-//       //   element: <Dashboard />,
-//       // },
-//       {
-//         path: 't2dminfo',
-//         element: <T2DMInfo />,
-//       },
-//       {
-//         path: 'selfcare',
-//         element: <SelfCare />,
-//       },
-//       {
-//         path: 'faq',
-//         element: <FAQ />,
-//       },
-//       {
-//         path: 'bgl',
-//         element: <BGL />,
-//         action: glucoseAction,
-//         loader: glucoseLoader
-//       },
-//       {
-//         path: 'medicine',
-//         element: <Medicine />,
-//         action: medicineAction,
-//         loader: medicineLoader
-//       },
-//       {
-//         path: 'exercise',
-//         element: <Exercise />,
-//         action: exerciseAction,
-//         loader: exerciseLoader
-//       },
-//       {
-//         path: 'food',
-//         element: <Food />,
-//         action: foodAction,
-//         loader: foodLoader
-//       },
-//       {
-//         path: 'lab',
-//         element: <Lab />,
-//       },
-//       {
-//         path: 'emergency',
-//         element: <Emergency />,
-//       },
-//       {
-//         path: 'notepad',
-//         element: <Notepad />,
-//       },
-//       {
-//         path: 'community',
-//         element: <Community />,
-//       },
-//     ],
-//   },
-//   {
-//     path: 'login',
-//     element: <Login />,
-//     action: loginAction
-//   },
-//   {
-//     path: 'register',
-//     element: <Register />,
-//     action: registerAction
-//   },
-// ]);
+import { loader as dashboardLoader } from "./components/Dashboard";
+import { loader as glucoseLoader } from "./components/BGL";
+import { loader as medicineLoader } from "./components/Medicine";
+import { loader as exerciseLoader } from "./components/Exercise";
+import { loader as foodLoader } from "./components/Food";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
   },
   {
-    path: 'login',
+    path: "login",
     element: <Login />,
-    action: loginAction
+    action: loginAction,
   },
   {
-    path: 'register',
+    path: "register",
     element: <Register />,
-    action: registerAction
+    action: registerAction,
   },
   {
-    path: '/',
+    path: "/",
     element: <Home />,
     children: [
       {
         index: true,
         element: <Dashboard />,
-        loader: dashboardLoader
+        loader: dashboardLoader,
       },
       {
-        path: 't2dminfo',
+        path: "t2dminfo",
         element: <T2DMInfo />,
       },
       {
-        path: 'selfcare',
+        path: "selfcare",
         element: <SelfCare />,
       },
       {
-        path: 'faq',
+        path: "faq",
         element: <FAQ />,
       },
       {
-        path: 'bgl',
+        path: "bgl",
         element: <BGL />,
         action: glucoseAction,
-        loader: glucoseLoader
+        loader: glucoseLoader,
       },
       {
-        path: 'medicine',
+        path: "medicine",
         element: <Medicine />,
         action: medicineAction,
-        loader: medicineLoader
+        loader: medicineLoader,
       },
       {
-        path: 'exercise',
+        path: "exercise",
         element: <Exercise />,
         action: exerciseAction,
-        loader: exerciseLoader
+        loader: exerciseLoader,
       },
       {
-        path: 'food',
+        path: "food",
         element: <Food />,
         action: foodAction,
-        loader: foodLoader
+        loader: foodLoader,
       },
       {
-        path: 'lab',
+        path: "lab",
         element: <Lab />,
       },
       {
-        path: 'emergency',
+        path: "emergency",
         element: <Emergency />,
       },
       {
-        path: 'notepad',
+        path: "notepad",
         element: <Notepad />,
       },
       {
-        path: 'community',
+        path: "community",
         element: <Community />,
       },
-    
-    ]
-    }
-
-])
+    ],
+  },
+]);
 
 const App = () => {
   return <RouterProvider router={router} />;

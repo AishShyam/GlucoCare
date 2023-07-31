@@ -6,6 +6,11 @@ export const getAllMedicineValue = async (req, res) => {
     res.status(200).json({ medicineData })
 }
 
+export const getLatestMedicineValue = async (req, res) => {
+    const medicineData = await Medicine.find({createdBy: req.user.userId}).sort({ createdAt: -1 }).limit(1)
+    res.status(200).json({ medicineData })
+}
+
 export const createMedicineValue = async (req,res) => {
     req.body.createdBy = req.user.userId
     const medicineValue = await Medicine.create(req.body)

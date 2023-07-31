@@ -9,6 +9,7 @@ import Food from '../models/FoodModel.js'
 import Notes from '../models/NotesModel.js'
 import Community from '../models/CommunityModel.js'
 import Lab from '../models/LabModel.js'
+import Emergency from '../models/EmergencyModel.js'
 
 import mongoose from 'mongoose'
 
@@ -192,6 +193,21 @@ export const validateLabIdParam = withValidationErrors([
   if (!labValue) throw new NotFoundError(`no message value with id ${value}`)
   const isAdmin = req.user.role === 'admin'
   const isOwner = req.user.userId === labValue.createdBy.toString()
+  if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route')
+})
+])
+
+export const validateEmergencyInput = withValidationErrors([
+])
+
+export const validateEmergencyIdParam = withValidationErrors([
+  param('id').custom(async (value, {req}) => {
+  const isValidId = mongoose.Types.ObjectId.isValid(value)
+  if (!isValidId) throw new BadRequestError('invalid MongoDB id')
+  const emergencyValue = await Emergency.findById(value)
+  if (!emergencyValue) throw new NotFoundError(`no message value with id ${value}`)
+  const isAdmin = req.user.role === 'admin'
+  const isOwner = req.user.userId === emergencyValue.createdBy.toString()
   if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route')
 })
 ])

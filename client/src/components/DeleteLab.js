@@ -1,6 +1,8 @@
 import {Button } from 'react-bootstrap'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import DeleteLogo from '../assets/bin.png'
+
 
 export const action = async (event, id) => {
     event.preventDefault()
@@ -23,7 +25,7 @@ function DeleteLab(props) {
     return (
         <>
         <Button variant="danger" onClick={handleDelete}>
-        Delete
+        <img src={DeleteLogo} width="18px" alt=""/>
         </Button>
         </>
     )

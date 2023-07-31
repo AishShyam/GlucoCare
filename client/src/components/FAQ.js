@@ -1,9 +1,27 @@
+import Accordion from "react-bootstrap/Accordion";
+import { faqJson } from "../assets/info";
+
 function FAQ() {
-    return (
-        <>
-            <h1>This is the FAQ page</h1>
-        </>
-    )
+  return (
+    <>
+      <div className="title">Carer Self Care</div>
+      <br></br>
+      <div className="static--component">
+        <div className="container">
+          <Accordion defaultActiveKey="0" flush>
+            {faqJson.map((item, index) => (
+              <Accordion.Item eventKey={index.toString()} key={index}>
+                <Accordion.Header>{item.question}</Accordion.Header>
+                <Accordion.Body>{item.answer}</Accordion.Body>
+              </Accordion.Item>
+            ))}
+          </Accordion>
+        </div>
+      </div>
+      <br></br>
+      <br></br>
+    </>
+  );
 }
 
-export default FAQ
+export default FAQ;

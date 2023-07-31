@@ -21,6 +21,9 @@ function Sidebar() {
                     navigate('/'+selected)
                 }}
                 className="sidebar--color"
+                style={{
+                    position: "fixed",
+                }}
             >
                 <SideNav.Toggle />
                 <SideNav.Nav defaultSelected="">

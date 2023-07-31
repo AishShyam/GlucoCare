@@ -15,6 +15,7 @@ import foodRouter from './routers/foodRouter.js'
 import notesRouter from './routers/notesRouter.js'
 import communityRouter from './routers/communityRouter.js'
 import labRouter from './routers/labRouter.js'
+import emergencyRouter from './routers/emergencyRouter.js'
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -47,6 +48,7 @@ app.use('/api/v1/food', authenticateUser, foodRouter)
 app.use('/api/v1/notes', authenticateUser, notesRouter)
 app.use('/api/v1/community', authenticateUser, communityRouter)
 app.use('/api/v1/lab', authenticateUser, labRouter)
+app.use('/api/v1/emergency', authenticateUser, emergencyRouter)
 
 
 
