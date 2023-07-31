@@ -46,6 +46,11 @@
 
 .navbar {
   background-color: #052e7e;
+  min-width: 500px;
+  /* width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0; */
 }
 
 .navbar--option {
@@ -81,7 +86,7 @@
 }
 
 .login--container {
-  width: 40%;
+  width: 50%;
   margin: auto;
   margin-top: 10%;
 }
@@ -107,6 +112,7 @@
   font-size: 30px;
   font-weight: bold;
   color: #052e7e;
+  padding-bottom: 40px;
 }
 
 .dropdown {
@@ -169,7 +175,7 @@
 }
 
 .static--component {
-  margin-top: 5%;
+  margin-top: 1%;
   padding-left: 80px;
 }
 
@@ -177,5 +183,9 @@
   padding-top: 10px;
   text-align: center;
   color: #052e7e;
+}
+
+.app--color--text {
+  color: #052e7e !important;
 }
 

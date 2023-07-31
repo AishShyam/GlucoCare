@@ -71,8 +71,8 @@ function Excercise() {
 
   return (
     <>
-      <div className="title">Exercise Tracker</div>
       <div className="blg--component">
+        <div className="title">Exercise Tracker</div>
         <div class="container border">
           <table class="table table-responsive w-100 d-block d-md-table">
             <thead>

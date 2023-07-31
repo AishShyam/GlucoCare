@@ -72,8 +72,8 @@ function BGL() {
   return (
     <>
       <div className="element">
-        <div className="title">Blood Glucose Tracker</div>
         <div className="blg--component">
+        <div className="title">Blood Glucose Tracker</div>
           <div class="container border">
             <table class="table table-responsive w-100 d-block d-md-table">
               <thead>

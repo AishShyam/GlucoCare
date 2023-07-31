@@ -69,9 +69,9 @@ function Emergency() {
   };
   return (
     <>
-      <div className="title">Emergency Information</div>
       <div className="blg--component">
-        <div class="container pt-5 my-5">
+      <div className="title">Emergency Information</div>
+        <div class="container">
           <Card>
             <Card.Header>Medical Information Summary</Card.Header>
             {emergencyData && (
@@ -107,10 +107,10 @@ function Emergency() {
             <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical Information
           </Button>
           <Button className="button2">
-            <a href="tel:{emergencyData.contact}">
-              <img src={callLogo} width="25px" alt="" />
-            </a>{" "}
-            Call Emergency Number
+            <a href="tel:{emergencyData[0].contact}">
+              <img src={callLogo} width="25px" alt="" /> Call Emergency Number
+            </a>
+            
           </Button>
 
           {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}

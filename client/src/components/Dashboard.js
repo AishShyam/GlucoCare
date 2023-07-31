@@ -117,12 +117,11 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="title"><img src={DiabetesLogo} width="40px" alt=""/> Welcome to GlucoCare</div>
-      {/* <div className="dashboard--content">A support app for carers of people with Type 2 Diabetes</div> */}
       <div className="blg--component">
+      <div className="title"><img src={DiabetesLogo} width="40px" alt=""/> Welcome to GlucoCare</div>
         <div class="container border">
           <div className="dashboard">
-            <h5>Latest Readings:</h5>
+            <h5 className="app--color--text">Latest Readings:</h5>
             <br></br>
             <div className="readings">
               {glucoseData.length > 0 ? (

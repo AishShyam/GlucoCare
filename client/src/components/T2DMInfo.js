@@ -3,6 +3,8 @@ import { MedicineJson, exerciseIdeasJson } from "../assets/info";
 import { BloodGlucoseJson } from "../assets/info";
 import { DiabetesComplicationSignsJson } from "../assets/info";
 import { mythJson } from "../assets/info";
+import { emergencyPlanJson } from "../assets/info";
+
 
 function T2DMInfo() {
   const oralData = MedicineJson["Oral Medications"];
@@ -537,6 +539,33 @@ function T2DMInfo() {
               </div>
             </Accordion.Body>
           </Accordion.Item>
+          <Accordion.Item eventKey="11">
+              <Accordion.Header>
+                Crisis and Emergency Preparedness
+              </Accordion.Header>
+              <Accordion.Body>
+                <div>
+                  Creating an emergency plan for diabetes-related emergencies is
+                  crucial to ensure the safety and well-being of the person you
+                  are caring for. Here are some guidelines to help you develop
+                  an effective emergency plan:
+                </div>
+                <ul>
+                  {emergencyPlanJson.map((item) => (
+                    <>
+                      <li>
+                        <b>{item.name}</b>: {item.tip}
+                      </li>
+                      <br></br>
+                    </>
+                  ))}
+                </ul>
+                <div className="small-text">
+                  Source:
+                  https://www.healthline.com/health/heart-disease/exercise-stress-relief#Check-with-Your-Doctor
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
         </Accordion>
         <br></br>
       </div>

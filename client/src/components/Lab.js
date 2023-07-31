@@ -71,8 +71,8 @@ function Lab() {
 
   return (
     <>
-      <div className="title">Lab Results Tracker</div>
       <div className="blg--component">
+        <div className="title">Lab Results Tracker</div>
         <div class="container border">
           <table class="table">
             <thead>

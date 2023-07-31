@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import NavBar2 from './Navbar2'
 
 export const action = async (event, navigate) => {
   event.preventDefault()
@@ -26,9 +27,10 @@ const Register = () => {
   }
   return (
     <div>
+      <NavBar2 />
       <div className='login--container'>
-      <div class="container p-3 my-3 border">
-        <h3 className='center--wrapper'>Register</h3>
+      <div class="container border">
+      <div className='title'>Register</div>
         <Form method='post' onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>

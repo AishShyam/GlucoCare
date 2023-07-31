@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import type2Logo from "../assets/diabetes.png";
 import T2DMLogo from "../assets/information.png";
 import SelfCareLogo from "../assets/hands-holding-heart.png";
-import FAQLogo from "../assets/help.png";
+import FAQLogo from "../assets/faq.png";
 import { Link } from "react-router-dom";
 import userLogo from "../assets/user.png";
 import Dropdown from "react-bootstrap/Dropdown";

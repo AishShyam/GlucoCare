@@ -66,9 +66,9 @@ function Notepad() {
 
   return (
     <>
-      <div className="title">Notepad</div>
       <div className="blg--component">
-        <div className="container border">
+        <div className="title">Notepad</div>
+        <div className="container">
           <div className="flex">
             {notesData.map((item) => (
               <Card style={{ width: "18rem" }} key={item.createdAt}>

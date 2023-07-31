@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { ListGroup, ListGroupItem, Card } from "react-bootstrap";
-import sendLogo from '../assets/send.png'
+import sendLogo from "../assets/send.png";
 
 export const action = async (event) => {
   event.preventDefault();
@@ -56,9 +56,9 @@ function Community() {
 
   return (
     <>
-      <div className="title">Community Forum</div>
       <div className="blg--component">
-        <div className="container pt-5 my-5 border">
+        <div className="title">Community Forum</div>
+        <div className="container">
           <div className="scroll">
             <ListGroup>
               {communityData.map((item) => (
@@ -82,7 +82,7 @@ function Community() {
             />
             <br></br>
             <Button className="button" type="submit">
-            <img src={sendLogo} width="25px" alt="" /> Send Message
+              <img src={sendLogo} width="25px" alt="" /> Send Message
             </Button>
           </Form>
         </div>

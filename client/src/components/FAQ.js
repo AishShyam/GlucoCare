@@ -4,10 +4,10 @@ import { faqJson } from "../assets/info";
 function FAQ() {
   return (
     <>
-      <div className="title">Carer Self Care</div>
       <br></br>
       <div className="static--component">
         <div className="container">
+          <div className="title">Frequently Ask Questions</div>
           <Accordion defaultActiveKey="0" flush>
             {faqJson.map((item, index) => (
               <Accordion.Item eventKey={index.toString()} key={index}>
