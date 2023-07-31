@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d24c44d9.css",
+    "main.js": "/static/js/main.5e862621.js",
+    "static/js/787.b19b8f4a.chunk.js": "/static/js/787.b19b8f4a.chunk.js",
+    "static/media/diabetes_color.png": "/static/media/diabetes_color.c65bc8c9c0509c37f835.png",
+    "static/media/meal.png": "/static/media/meal.091040ad1bd79863b5cf.png",
+    "static/media/medicine2.png": "/static/media/medicine2.b21a00fd3901e659651f.png",
+    "static/media/low-carb-diet.png": "/static/media/low-carb-diet.3c7543dc9adf08bf6c65.png",
+    "static/media/blood-sample.png": "/static/media/blood-sample.ac0ee9879a80578f7e34.png",
+    "static/media/diabetes2.png": "/static/media/diabetes2.68010d87c5a408d46863.png",
+    "static/media/hands-holding-heart.png": "/static/media/hands-holding-heart.478dfe273c9002816d0a.png",
+    "static/media/diabetes3.png": "/static/media/diabetes3.aa0edb98c0d3e82eef03.png",
+    "static/media/medicine.png": "/static/media/medicine.c012de00ce5508f1813e.png",
+    "static/media/emergency.png": "/static/media/emergency.1dfc2f86d693da2371d6.png",
+    "index.html": "/index.html",
+    "main.d24c44d9.css.map": "/static/css/main.d24c44d9.css.map",
+    "main.5e862621.js.map": "/static/js/main.5e862621.js.map",
+    "787.b19b8f4a.chunk.js.map": "/static/js/787.b19b8f4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d24c44d9.css",
+    "static/js/main.5e862621.js"
+  ]
+}

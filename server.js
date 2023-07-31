@@ -50,7 +50,9 @@ app.use('/api/v1/community', authenticateUser, communityRouter)
 app.use('/api/v1/lab', authenticateUser, labRouter)
 app.use('/api/v1/emergency', authenticateUser, emergencyRouter)
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public', 'index.html'));
+});
 
 
 

@@ -31,11 +31,11 @@ import { loader as exerciseLoader } from "./components/Exercise";
 import { loader as foodLoader } from "./components/Food";
 
 const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  // },
   {
     path: "/",
-  },
-  {
-    path: "login",
     element: <Login />,
     action: loginAction,
   },
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     element: <Home />,
     children: [
       {
-        index: true,
+        path: "dashboard",
         element: <Dashboard />,
         loader: dashboardLoader,
       },

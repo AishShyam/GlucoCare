@@ -68,7 +68,7 @@ function Notepad() {
     <>
       <div className="title">Notepad</div>
       <div className="blg--component">
-        <div className="container pt-5 my-5 border">
+        <div className="container border">
           <div className="flex">
             {notesData.map((item) => (
               <Card style={{ width: "18rem" }} key={item.createdAt}>
@@ -82,6 +82,7 @@ function Notepad() {
             ))}
           </div>
         </div>
+        <br></br>
         <Button className="button" type="submit" onClick={handleShow}>
           <img src={AddLogo} width="25px" alt="" /> Add new note
         </Button>

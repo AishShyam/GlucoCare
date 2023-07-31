@@ -16,7 +16,7 @@ function NavBar() {
   const navigate = useNavigate();
 
   const logoutUser = async () => {
-    navigate("/login");
+    navigate("/");
     await axios.get("api/v1/auth/logout");
     toast.success("Logging out...");
   };
@@ -26,7 +26,7 @@ function NavBar() {
       <Navbar className="navbar" data-bs-theme="dark">
         <Container>
           <Navbar.Brand className="navbar--title">
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/dashboard">
               <img src={type2Logo} width="35px" alt="GlucoCare" /> GlucoCare
             </Nav.Link>
           </Navbar.Brand>

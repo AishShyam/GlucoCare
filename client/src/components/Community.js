@@ -73,7 +73,7 @@ function Community() {
             </ListGroup>
           </div>
         </div>
-        <div class="container pt-5 my-5 border">
+        <div class="container pt-5 my-5">
           <Form method="post" onSubmit={handleSubmit}>
             <Form.Control
               className="me-auto"

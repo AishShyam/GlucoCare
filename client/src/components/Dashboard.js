@@ -135,7 +135,7 @@ const Dashboard = () => {
                   </Card.Body>
                 </Card>
               ) : (
-                <p>No glucose readings found.</p>
+                <p>No glucose readings yet.</p>
               )}
               {foodData.length > 0 ? (
                 <Card style={{ width: "18rem" }}>
@@ -145,7 +145,7 @@ const Dashboard = () => {
                   <Card.Body>{foodData[0].carbs} g</Card.Body>
                 </Card>
               ) : (
-                <p>No carbs readings found.</p>
+                <p>No carbs readings yet.</p>
               )}
               {foodData.length > 0 ? (
                 <Card style={{ width: "18rem" }}>
@@ -155,7 +155,7 @@ const Dashboard = () => {
                   <Card.Body>{foodData[0].calories} kcal</Card.Body>
                 </Card>
               ) : (
-                <p>No calorie readings found.</p>
+                <p>No calorie readings yet.</p>
               )}
               {medicineData.length > 0 ? (
                 <Card style={{ width: "18rem" }}>
@@ -168,7 +168,7 @@ const Dashboard = () => {
                   </Card.Body>
                 </Card>
               ) : (
-                <p>No medicine readings found.</p>
+                <p>No medicine readings yet.</p>
               )}
               {labData.length > 0 ? (
                 <Card style={{ width: "18rem" }}>
@@ -181,7 +181,7 @@ const Dashboard = () => {
                   </Card.Body>
                 </Card>
               ) : (
-                <p>No lab readings found.</p>
+                <p>No lab readings yet.</p>
               )}
             </div>
           </div>

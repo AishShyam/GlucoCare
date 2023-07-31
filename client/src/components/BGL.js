@@ -102,6 +102,7 @@ function BGL() {
               </tbody>
             </table>
           </div>
+          <br></br>
           <Button className="button" type="submit" onClick={handleShow}>
             <img src={AddLogo} width="25px" alt="" /> Add new record
           </Button>

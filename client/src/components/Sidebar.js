@@ -22,12 +22,12 @@ function Sidebar() {
                 }}
                 className="sidebar--color"
                 style={{
-                    position: "fixed",
+                    position: "fixed"
                 }}
             >
                 <SideNav.Toggle />
                 <SideNav.Nav defaultSelected="">
-                    <NavItem eventKey="">
+                    <NavItem eventKey="dashboard">
                         <NavIcon>
                             <img src={HomeLogo} width="30px" alt=""/>
                         </NavIcon>

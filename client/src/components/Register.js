@@ -11,7 +11,7 @@ export const action = async (event, navigate) => {
   try {
     await axios.post('/api/v1/auth/register', data)
     toast.success('Registration successful');
-    navigate('/login')
+    navigate('/')
   } catch (error) {
     toast.error(error?.response?.data?.msg)
     console.log(error)
@@ -53,7 +53,7 @@ const Register = () => {
           Submit
           </Button>
         </Form>
-        Already a member? <Link to='/login'>Login</Link>
+        Already a member? <Link to='/'>Login</Link>
       </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import AddLogo from "../assets/add-button.png";
-import callLogo from "../assets/ambulance.png"
+import callLogo from "../assets/ambulance.png";
 
 export const action = async (event) => {
   event.preventDefault();
@@ -74,37 +74,43 @@ function Emergency() {
         <div class="container pt-5 my-5">
           <Card>
             <Card.Header>Medical Information Summary</Card.Header>
-            <Card.Body>
-              <p>
-                <strong>Full Name:</strong> {emergencyData.name}
-              </p>
-              <p>
-                <strong>Date of Birth:</strong> {emergencyData.dob}
-              </p>
-              <p>
-                <strong>Blood Type:</strong> {emergencyData.bloodType}
-              </p>
-              <p>
-                <strong>Allergies:</strong> {emergencyData.allergies}
-              </p>
-              <p>
-                <strong>Medical Conditions:</strong>{" "}
-                {emergencyData.medicalConditions}
-              </p>
-              <p>
-                <strong>Medications:</strong> {emergencyData.currentMedication}
-              </p>
-              <p>
-                <strong>Emergency Contacts:</strong> {emergencyData.contact}
-              </p>
-            </Card.Body>
+            {emergencyData && (
+              <Card.Body>
+                <p>
+                  <strong>Full Name:</strong> {emergencyData.name}
+                </p>
+                <p>
+                  <strong>Date of Birth:</strong> {emergencyData.dob}
+                </p>
+                <p>
+                  <strong>Blood Type:</strong> {emergencyData.bloodType}
+                </p>
+                <p>
+                  <strong>Allergies:</strong> {emergencyData.allergies}
+                </p>
+                <p>
+                  <strong>Medical Conditions:</strong>{" "}
+                  {emergencyData.medicalConditions}
+                </p>
+                <p>
+                  <strong>Medications:</strong>{" "}
+                  {emergencyData.currentMedication}
+                </p>
+                <p>
+                  <strong>Emergency Contacts:</strong> {emergencyData.contact}
+                </p>
+              </Card.Body>
+            )}
           </Card>
           <br></br>
           <Button className="button" type="submit" onClick={handleShow}>
-          <img src={AddLogo} width="25px" alt="" /> Add Medical Information
+            <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical Information
           </Button>
           <Button className="button2">
-            <a href="tel:{emergencyData.contact}"><img src={callLogo} width="25px" alt="" /></a> Call Emergency Number
+            <a href="tel:{emergencyData.contact}">
+              <img src={callLogo} width="25px" alt="" />
+            </a>{" "}
+            Call Emergency Number
           </Button>
 
           {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}

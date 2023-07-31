@@ -73,7 +73,7 @@ function Excercise() {
     <>
       <div className="title">Exercise Tracker</div>
       <div className="blg--component">
-        <div class="container pt-5 my-5 border">
+        <div class="container border">
           <table class="table table-responsive w-100 d-block d-md-table">
             <thead>
               <tr>
@@ -99,6 +99,7 @@ function Excercise() {
             </tbody>
           </table>
         </div>
+        <br></br>
         <Button className="button" type="submit" onClick={handleShow}>
           <img src={AddLogo} width="25px" alt="" /> Add new record
         </Button>

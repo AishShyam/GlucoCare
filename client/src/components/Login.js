@@ -13,7 +13,7 @@ export const action = async (event, navigate) => {
     await axios.post('/api/v1/auth/login', data)
     toast.success('Login successful')
     // return redirect('/')
-    navigate('/')
+    navigate('/dashboard')
   } catch (error) {
     toast.error(error?.response?.data?.msg)
     console.log(error)
