@@ -104,6 +104,7 @@
   text-align: center;
   margin-top: 5%;
   padding-left: 80px;
+  padding-right: 40px;
 }
 
 .title {
@@ -195,4 +196,3 @@
   padding-bottom: 20px;
   flex-wrap: wrap;
 }
-
