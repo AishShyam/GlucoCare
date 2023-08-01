@@ -189,3 +189,10 @@
   color: #052e7e !important;
 }
 
+.flex--notepad {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+

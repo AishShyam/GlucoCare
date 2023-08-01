@@ -75,35 +75,41 @@ function Food() {
     <>
       <div className="blg--component">
         <div className="title">Nutrition Tracker</div>
-        <div class="container border">
-          <table class="table table-responsive w-100 d-block d-md-table">
-            <thead>
-              <tr>
-                <th scope="col">Date & Time</th>
-                <th scope="col">Carbs</th>
-                <th scope="col">Fats</th>
-                <th scope="col">Proteins</th>
-                <th scope="col">Calories</th>
-                <th scope="col">Meal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {foodData.map((item) => (
-                <tr key={item.createdAt}>
-                  <td>{item.createdAt}</td>
-                  <td>{item.carbs} g</td>
-                  <td>{item.fats} g</td>
-                  <td>{item.proteins} g</td>
-                  <td>{item.calories} kcal</td>
-                  <td>{item.meal}</td>
-                  <td>
-                    <EditFood id={item._id} />
-                    <DeleteFood id={item._id} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="container">
+          {foodData.length > 0 ? (
+            <div className="scroll">
+              <table class="table table-responsive w-100 d-block d-md-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col">Carbs</th>
+                    <th scope="col">Fats</th>
+                    <th scope="col">Proteins</th>
+                    <th scope="col">Calories</th>
+                    <th scope="col">Meal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {foodData.map((item) => (
+                    <tr key={item.createdAt}>
+                      <td>{item.createdAt}</td>
+                      <td>{item.carbs} g</td>
+                      <td>{item.fats} g</td>
+                      <td>{item.proteins} g</td>
+                      <td>{item.calories} kcal</td>
+                      <td>{item.meal}</td>
+                      <td>
+                        <EditFood id={item._id} />
+                        <DeleteFood id={item._id} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p>No nutrition readings yet</p>
+          )}
         </div>
         <br></br>
         <Button className="button" type="submit" onClick={handleShow}>

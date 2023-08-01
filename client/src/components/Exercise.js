@@ -73,31 +73,37 @@ function Excercise() {
     <>
       <div className="blg--component">
         <div className="title">Exercise Tracker</div>
-        <div class="container border">
-          <table class="table table-responsive w-100 d-block d-md-table">
-            <thead>
-              <tr>
-                <th scope="col">Date & Time</th>
-                <th scope="col">Exercise Type</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Comment</th>
-              </tr>
-            </thead>
-            <tbody>
-              {exerciseData.map((item) => (
-                <tr key={item.createdAt}>
-                  <td>{item.createdAt}</td>
-                  <td>{item.exerciseType}</td>
-                  <td>{item.duration}</td>
-                  <td>{item.comment}</td>
-                  <td>
-                    <EditExercise id={item._id} />
-                    <DeleteExercise id={item._id} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="container ">
+          {exerciseData.length > 0 ? (
+            <div className="scroll">
+              <table class="table table-responsive w-100 d-block d-md-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col">Exercise Type</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {exerciseData.map((item) => (
+                    <tr key={item.createdAt}>
+                      <td>{item.createdAt}</td>
+                      <td>{item.exerciseType}</td>
+                      <td>{item.duration}</td>
+                      <td>{item.comment}</td>
+                      <td>
+                        <EditExercise id={item._id} />
+                        <DeleteExercise id={item._id} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p>No exercise readings yet</p>
+          )}
         </div>
         <br></br>
         <Button className="button" type="submit" onClick={handleShow}>

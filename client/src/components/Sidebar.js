@@ -10,16 +10,20 @@ import CommunityLogo from '../assets/discussion.png';
 import NotepadLogo from '../assets/notepad.png'
 import FoodLogo from '../assets/cutlery.png'
 import LabLogo from '../assets/blood-test.png'
+import { useState } from 'react';
 
 function Sidebar() {
     const navigate = useNavigate()
+    const [selectedItem, setSelectedItem] = useState('');
+    const handleSelect = (selected) => {
+        setSelectedItem(selected);
+        console.log(selected)
+        navigate('/'+selected)
+      }
     return (
         <>
             <SideNav
-                onSelect={(selected) => {
-                    console.log(selected)
-                    navigate('/'+selected)
-                }}
+                onSelect={handleSelect}
                 className="sidebar--color"
                 style={{
                     position: "fixed"
@@ -27,7 +31,7 @@ function Sidebar() {
             >
                 <SideNav.Toggle />
                 <SideNav.Nav defaultSelected="">
-                    <NavItem eventKey="dashboard">
+                    <NavItem eventKey="dashboard" active={selectedItem === "dashboard"}>
                         <NavIcon>
                             <img src={HomeLogo} width="30px" alt=""/>
                         </NavIcon>
@@ -35,7 +39,7 @@ function Sidebar() {
                             Home
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="bgl">
+                    <NavItem eventKey="bgl" active={selectedItem === "bgl"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={BGLLogo} width="30px" alt=""/>
@@ -44,7 +48,7 @@ function Sidebar() {
                             Blood Glucose
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="medicine">
+                    <NavItem eventKey="medicine" active={selectedItem === "medicine"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={MedicineLogo} width="30px" alt=""/>
@@ -53,7 +57,7 @@ function Sidebar() {
                             Medicine
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="exercise">
+                    <NavItem eventKey="exercise" active={selectedItem === "exercise"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={ExcerciseLogo} width="30px" alt=""/>
@@ -62,7 +66,7 @@ function Sidebar() {
                             Exercise
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="food">
+                    <NavItem eventKey="food" active={selectedItem === "food"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={FoodLogo} width="30px" alt=""/>
@@ -71,7 +75,7 @@ function Sidebar() {
                             Food
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="lab">
+                    <NavItem eventKey="lab" active={selectedItem === "lab"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={LabLogo} width="30px" alt=""/>
@@ -80,7 +84,7 @@ function Sidebar() {
                             Lab
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="emergency">
+                    <NavItem eventKey="emergency" active={selectedItem === "emergency"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={EmergencyLogo} width="30px" alt=""/>
@@ -89,7 +93,7 @@ function Sidebar() {
                             Emergency
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="notepad">
+                    <NavItem eventKey="notepad" active={selectedItem === "notepad"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={NotepadLogo} width="30px" alt=""/>
@@ -98,7 +102,7 @@ function Sidebar() {
                             Notepad
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="community">
+                    <NavItem eventKey="community" active={selectedItem === "community"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
                             <img src={CommunityLogo} width="30px" alt=""/>

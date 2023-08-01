@@ -71,7 +71,7 @@ function Emergency() {
     <>
       <div className="blg--component">
       <div className="title">Emergency Information</div>
-        <div class="container">
+        <div className="container">
           <Card>
             <Card.Header>Medical Information Summary</Card.Header>
             {emergencyData && (
@@ -107,10 +107,9 @@ function Emergency() {
             <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical Information
           </Button>
           <Button className="button2">
-            <a href="tel:{emergencyData[0].contact}">
+            <a href="tel:{emergencyData.contact}">
               <img src={callLogo} width="25px" alt="" /> Call Emergency Number
-            </a>
-            
+            </a>            
           </Button>
 
           {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}

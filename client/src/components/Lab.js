@@ -73,31 +73,37 @@ function Lab() {
     <>
       <div className="blg--component">
         <div className="title">Lab Results Tracker</div>
-        <div class="container border">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Date & Time</th>
-                <th scope="col">Test Type</th>
-                <th scope="col">Test Results</th>
-                <th scope="col">Test Unit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {labData.map((item) => (
-                <tr key={item.createdAt}>
-                  <td>{item.createdAt}</td>
-                  <td>{item.testType}</td>
-                  <td>{item.testResult}</td>
-                  <td>{item.testUnit}</td>
-                  <td>
-                    <EditLab id={item._id} />
-                    <DeleteLab id={item._id} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="container">
+          {labData.length > 0 ? (
+            <div className="scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col">Test Type</th>
+                    <th scope="col">Test Results</th>
+                    <th scope="col">Test Unit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {labData.map((item) => (
+                    <tr key={item.createdAt}>
+                      <td>{item.createdAt}</td>
+                      <td>{item.testType}</td>
+                      <td>{item.testResult}</td>
+                      <td>{item.testUnit}</td>
+                      <td>
+                        <EditLab id={item._id} />
+                        <DeleteLab id={item._id} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p>No lab readings yet</p>
+          )}
         </div>
         <br></br>
         <Button className="button" type="submit" onClick={handleShow}>

@@ -119,7 +119,7 @@ const Dashboard = () => {
     <>
       <div className="blg--component">
       <div className="title"><img src={DiabetesLogo} width="40px" alt=""/> Welcome to GlucoCare</div>
-        <div class="container border">
+        <div className="container border">
           <div className="dashboard">
             <h5 className="app--color--text">Latest Readings:</h5>
             <br></br>

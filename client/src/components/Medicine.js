@@ -71,32 +71,38 @@ function Medicine() {
   return (
     <>
       <div className="blg--component">
-      <div className="title">Medication Tracker</div>
-        <div class="container border">
-          <table class="table table-responsive w-100 d-block d-md-table">
-            <thead>
-              <tr>
-                <th scope="col">Date & Time</th>
-                <th scope="col">Medicine Name</th>
-                <th scope="col">Dosage</th>
-                <th scope="col">Unit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {medicineData.map((item) => (
-                <tr key={item.createdAt}>
-                  <td>{item.createdAt}</td>
-                  <td>{item.medicineName}</td>
-                  <td>{item.dosage}</td>
-                  <td>{item.medicineUnit}</td>
-                  <td>
-                    <EditMedicine id={item._id} />
-                    <DeleteMedicine id={item._id} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="title">Medication Tracker</div>
+        <div className="container">
+          {medicineData.length > 0 ? (
+            <div className="scroll">
+              <table class="table table-responsive w-100 d-block d-md-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col">Medicine Name</th>
+                    <th scope="col">Dosage</th>
+                    <th scope="col">Unit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {medicineData.map((item) => (
+                    <tr key={item.createdAt}>
+                      <td>{item.createdAt}</td>
+                      <td>{item.medicineName}</td>
+                      <td>{item.dosage}</td>
+                      <td>{item.medicineUnit}</td>
+                      <td>
+                        <EditMedicine id={item._id} />
+                        <DeleteMedicine id={item._id} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p>No medication readings yet</p>
+          )}
         </div>
         <br></br>
         <Button className="button" type="submit" onClick={handleShow}>
@@ -104,7 +110,6 @@ function Medicine() {
         </Button>
       </div>
       <div className="container">
-        
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Add Medicine</Modal.Title>

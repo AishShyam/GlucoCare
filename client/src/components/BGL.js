@@ -50,6 +50,7 @@ function BGL() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [glucoseData, setGlucoseData] = useState([]);
+  console.log("this data for condition", glucoseData);
 
   useEffect(() => {
     fetchGlucoseData();
@@ -73,34 +74,39 @@ function BGL() {
     <>
       <div className="element">
         <div className="blg--component">
-        <div className="title">Blood Glucose Tracker</div>
-          <div class="container border">
-            <table class="table table-responsive w-100 d-block d-md-table">
-              <thead>
-                <tr>
-                  <th scope="col">Date & Time</th>
-                  <th scope="col">Blood Glucose Level</th>
-                  <th scope="col">Unit</th>
-                  <th scope="col">Meal</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {glucoseData.map((item) => (
-                  <tr key={item.createdAt}>
-                    {/* <td>{item.createdAt}</td> */}
-                    <td>{item.createdAt}</td>
-                    <td>{item.glucose}</td>
-                    <td>{item.unit}</td>
-                    <td>{item.mealTag}</td>
-                    <td>
-                      <Edit id={item._id} />
-                      <Delete id={item._id} />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="title">Blood Glucose Tracker</div>
+          <div className="container">
+            {glucoseData.length > 0 ? (
+              <div className="scroll">
+                <table class="table table-responsive w-100 d-block d-md-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date & Time</th>
+                      <th scope="col">Blood Glucose Level</th>
+                      <th scope="col">Unit</th>
+                      <th scope="col">Meal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {glucoseData.map((item) => (
+                      <tr key={item.createdAt}>
+                        {/* <td>{item.createdAt}</td> */}
+                        <td>{item.createdAt}</td>
+                        <td>{item.glucose}</td>
+                        <td>{item.unit}</td>
+                        <td>{item.mealTag}</td>
+                        <td>
+                          <Edit id={item._id} />
+                          <Delete id={item._id} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p>No glucose readings yet </p>
+            )}
           </div>
           <br></br>
           <Button className="button" type="submit" onClick={handleShow}>
