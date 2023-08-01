@@ -70,7 +70,7 @@ function Emergency() {
   return (
     <>
       <div className="blg--component">
-      <div className="title">Emergency Information</div>
+        <div className="title">Emergency Information</div>
         <div className="container">
           <Card>
             <Card.Header>Medical Information Summary</Card.Header>
@@ -104,12 +104,15 @@ function Emergency() {
           </Card>
           <br></br>
           <Button className="button" type="submit" onClick={handleShow}>
-            <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical Information
+            <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical
+            Information
           </Button>
           <Button className="button2">
-            <a href="tel:{emergencyData.contact}">
+          {emergencyData.contact && (
+            <a href={`tel:${emergencyData.contact}`}>
               <img src={callLogo} width="25px" alt="" /> Call Emergency Number
-            </a>            
+            </a>
+          )}
           </Button>
 
           {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}
