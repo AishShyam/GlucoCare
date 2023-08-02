@@ -107,13 +107,25 @@ function Emergency() {
             <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical
             Information
           </Button>
-          <Button className="button2">
+          {/* <Button className="button2">
           {emergencyData.contact && (
             <a href={`tel:${emergencyData.contact}`}>
               <img src={callLogo} width="25px" alt="" /> Call Emergency Number
             </a>
           )}
-          </Button>
+          </Button> */}
+
+          {emergencyData ? (
+            <Button className="button2">
+              <a href={`tel:${emergencyData.contact}`}>
+                <img src={callLogo} width="25px" alt="" /> Call Emergency Number
+              </a>
+            </Button>
+          ) : (
+            <Button className="button2" onClick={() => alert("Update emergency number by adding Medical Information")}>
+              <img src={callLogo} width="25px" alt="" /> Call Emergency Number
+            </Button>
+          )}
 
           {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}
           <Modal show={show} onHide={handleClose}>

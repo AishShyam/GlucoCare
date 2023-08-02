@@ -196,3 +196,7 @@
   padding-bottom: 20px;
   flex-wrap: wrap;
 }
+
+.table--container {
+  background-color: white;
+}

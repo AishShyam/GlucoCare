@@ -138,7 +138,7 @@ function Lab() {
           <Button className="button" type="submit" onClick={handleShow}>
             <img src={AddLogo} width="25px" alt="" /> Add new record
           </Button>
-          <AreaChartComponent labData={labData} />
+          {labData.length > 0 && <AreaChartComponent labData={labData} />}
         </div>
         <div className="container">
           <Modal show={show} onHide={handleClose}>

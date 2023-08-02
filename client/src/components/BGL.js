@@ -103,6 +103,7 @@ function BGL() {
       <div className="element">
         <div className="blg--component">
           <div className="title">Blood Glucose Tracker</div>
+          <div className="table--container">
           <div className="container">
             {glucoseData.length > 0 ? (
               <div className="scroll">
@@ -136,11 +137,14 @@ function BGL() {
               <p>No glucose readings yet </p>
             )}
           </div>
+          </div>
           <br></br>
           <Button className="button" type="submit" onClick={handleShow}>
             <img src={AddLogo} width="25px" alt="" /> Add new record
           </Button>
-          <AreaChartComponent glucoseData={glucoseData} />
+          {glucoseData.length > 0 && (
+            <AreaChartComponent glucoseData={glucoseData} />
+          )}
         </div>
         <div className="container">
           <Modal show={show} onHide={handleClose}>
