@@ -16,7 +16,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-} from 'recharts';
+} from "recharts";
 
 export const action = async (event) => {
   event.preventDefault();
@@ -52,18 +52,22 @@ export const loader = async () => {
 
 export const AreaChartComponent = (props) => {
   return (
-    <ResponsiveContainer width='100%' height={300}>
+    <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={props.glucoseData} margin={{ top: 50 }}>
-        <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='createdAt' />
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="createdAt" />
         <YAxis allowDecimals={false} />
         <Tooltip />
-        <Area type='monotone' dataKey='glucose' stroke='#052e7e' fill='#052e7e' />
+        <Area
+          type="monotone"
+          dataKey="glucose"
+          stroke="#052e7e"
+          fill="#052e7e"
+        />
       </AreaChart>
     </ResponsiveContainer>
   );
 };
-
 
 function BGL() {
   const navigate = useNavigate();
@@ -75,7 +79,6 @@ function BGL() {
   const handleShow = () => setShow(true);
   const [glucoseData, setGlucoseData] = useState([]);
   console.log("this data for condition", glucoseData);
-
 
   useEffect(() => {
     fetchGlucoseData();
@@ -137,7 +140,7 @@ function BGL() {
           <Button className="button" type="submit" onClick={handleShow}>
             <img src={AddLogo} width="25px" alt="" /> Add new record
           </Button>
-          <AreaChartComponent glucoseData={glucoseData}/>
+          <AreaChartComponent glucoseData={glucoseData} />
         </div>
         <div className="container">
           <Modal show={show} onHide={handleClose}>
@@ -181,7 +184,6 @@ function BGL() {
             </Modal.Body>
           </Modal>
         </div>
-        
       </div>
     </>
   );

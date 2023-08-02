@@ -8,6 +8,15 @@ import axios from "axios";
 import EditFood from "./EditFood";
 import DeleteFood from "./DeleteFood";
 import AddLogo from "../assets/add-button.png";
+import {
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from 'recharts';
 
 export const action = async (event) => {
   event.preventDefault();
@@ -43,6 +52,22 @@ export const loader = async () => {
   }
 };
 
+export const AreaChartComponent = (props) => {
+  return (
+    <ResponsiveContainer width='100%' height={300}>
+      <AreaChart data={props.foodData} margin={{ top: 50 }}>
+        <CartesianGrid strokeDasharray='3 3' />
+        <XAxis dataKey='createdAt' />
+        <YAxis allowDecimals={false} />
+        <Tooltip />
+        <Area type='monotone' dataKey='carbs' stroke='#052e7e' fill='#052e7e' />
+        <Area type='monotone' dataKey='fats' stroke='#065c96' fill='#065c96' />
+        <Area type='monotone' dataKey='proteins' stroke='#043e65' fill='#043e65' />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+};
+
 function Food() {
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -73,6 +98,7 @@ function Food() {
 
   return (
     <>
+    <div className="element">
       <div className="blg--component">
         <div className="title">Nutrition Tracker</div>
         <div className="container">
@@ -115,6 +141,7 @@ function Food() {
         <Button className="button" type="submit" onClick={handleShow}>
           <img src={AddLogo} width="25px" alt="" /> Add new record
         </Button>
+        <AreaChartComponent foodData={foodData}/>
       </div>
       <div className="container">
         <Modal show={show} onHide={handleClose}>
@@ -181,6 +208,7 @@ function Food() {
             </Form>
           </Modal.Body>
         </Modal>
+      </div>
       </div>
     </>
   );

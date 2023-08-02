@@ -8,6 +8,15 @@ import axios from "axios";
 import EditLab from "./EditLab";
 import DeleteLab from "./DeleteLab";
 import AddLogo from "../assets/add-button.png";
+import {
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 export const action = async (event) => {
   event.preventDefault();
@@ -41,6 +50,25 @@ export const loader = async () => {
   }
 };
 
+export const AreaChartComponent = (props) => {
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <AreaChart data={props.labData} margin={{ top: 50 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="createdAt" />
+        <YAxis allowDecimals={false} />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey="testResult"
+          stroke="#052e7e"
+          fill="#052e7e"
+        />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+};
+
 function Lab() {
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -71,87 +99,96 @@ function Lab() {
 
   return (
     <>
-      <div className="blg--component">
-        <div className="title">Lab Results Tracker</div>
-        <div className="container">
-          {labData.length > 0 ? (
-            <div className="scroll">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Date & Time</th>
-                    <th scope="col">Test Type</th>
-                    <th scope="col">Test Results</th>
-                    <th scope="col">Test Unit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {labData.map((item) => (
-                    <tr key={item.createdAt}>
-                      <td>{item.createdAt}</td>
-                      <td>{item.testType}</td>
-                      <td>{item.testResult}</td>
-                      <td>{item.testUnit}</td>
-                      <td>
-                        <EditLab id={item._id} />
-                        <DeleteLab id={item._id} />
-                      </td>
+      <div className="element">
+        <div className="blg--component">
+          <div className="title">Lab Results Tracker</div>
+          <div className="container">
+            {labData.length > 0 ? (
+              <div className="scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date & Time</th>
+                      <th scope="col">Test Type</th>
+                      <th scope="col">Test Results</th>
+                      <th scope="col">Test Unit</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p>No lab readings yet</p>
-          )}
+                  </thead>
+                  <tbody>
+                    {labData.map((item) => (
+                      <tr key={item.createdAt}>
+                        <td>{item.createdAt}</td>
+                        <td>{item.testType}</td>
+                        <td>{item.testResult}</td>
+                        <td>{item.testUnit}</td>
+                        <td>
+                          <EditLab id={item._id} />
+                          <DeleteLab id={item._id} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p>No lab readings yet</p>
+            )}
+          </div>
+          <br></br>
+          <Button className="button" type="submit" onClick={handleShow}>
+            <img src={AddLogo} width="25px" alt="" /> Add new record
+          </Button>
+          <AreaChartComponent labData={labData} />
         </div>
-        <br></br>
-        <Button className="button" type="submit" onClick={handleShow}>
-          <img src={AddLogo} width="25px" alt="" /> Add new record
-        </Button>
-      </div>
-      <div className="container">
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add Lab Record</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form method="post" onSubmit={handleSubmit}>
-              <Form.Select aria-label="Default select example" name="testType">
-                <option>HbA1c</option>
-                <option>Fasting Blood Glucose</option>
-                <option>Oral Glucose Tolerance Test</option>
-                <option>Lipid Profile</option>
-                <option>Other</option>
-              </Form.Select>
-              <br></br>
-              <Form.Group className="mb-3">
-                <Form.Label>Test Result</Form.Label>
-                <Form.Control
-                  type="testResult"
-                  placeholder="Enter Result"
-                  name="testResult"
-                  autoFocus
-                  required
-                />
-              </Form.Group>
-              <br></br>
-              <Form.Select aria-label="Default select example" name="testUnit">
-                <option>%</option>
-                <option>mg/dL</option>
-                <option>mmol/L</option>
-                <option>Other</option>
-              </Form.Select>
-              <br></br>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary" type="submit">
-                Add Record
-              </Button>
-            </Form>
-          </Modal.Body>
-        </Modal>
+        <div className="container">
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add Lab Record</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form method="post" onSubmit={handleSubmit}>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="testType"
+                >
+                  <option>HbA1c</option>
+                  <option>Fasting Blood Glucose</option>
+                  <option>Oral Glucose Tolerance Test</option>
+                  <option>Lipid Profile</option>
+                  <option>Other</option>
+                </Form.Select>
+                <br></br>
+                <Form.Group className="mb-3">
+                  <Form.Label>Test Result</Form.Label>
+                  <Form.Control
+                    type="testResult"
+                    placeholder="Enter Result"
+                    name="testResult"
+                    autoFocus
+                    required
+                  />
+                </Form.Group>
+                <br></br>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="testUnit"
+                >
+                  <option>%</option>
+                  <option>mg/dL</option>
+                  <option>mmol/L</option>
+                  <option>Other</option>
+                </Form.Select>
+                <br></br>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" type="submit">
+                  Add Record
+                </Button>
+              </Form>
+            </Modal.Body>
+          </Modal>
+        </div>
       </div>
     </>
   );

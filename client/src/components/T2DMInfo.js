@@ -18,10 +18,10 @@ function T2DMInfo() {
   const mythData = mythJson.type2DiabetesMyths;
   return (
     <>
-      <div className="title">Type 2 Diabetes</div>
       <br></br>
       <div className="static--component">
       <div className="container">
+      <div className="title">Type 2 Diabetes</div>
         <Accordion defaultActiveKey="0" flush>
           <Accordion.Item eventKey="0">
             <Accordion.Header>What is Type 2 Diabetes?</Accordion.Header>
