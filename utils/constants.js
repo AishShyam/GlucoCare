@@ -61,3 +61,11 @@ export const LAB_UNITS = {
   Other:'Other'
 }
 
+export const INSULIN_TYPE = {
+  RAPID: 'Rapid-Acting Insulin',
+  SHORT: 'Short-Acting (Regular) Insulin',
+  INTERMIDIATE: 'Intermediate-Acting Insulin',
+  LONG: 'Long-Acting Insulin',
+  OTHER: 'Other'
+}
+

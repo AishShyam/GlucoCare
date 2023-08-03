@@ -16,6 +16,8 @@ import notesRouter from './routers/notesRouter.js'
 import communityRouter from './routers/communityRouter.js'
 import labRouter from './routers/labRouter.js'
 import emergencyRouter from './routers/emergencyRouter.js'
+import insulinRouter from './routers/insulinRouter.js'
+import scheduleRouter from './routers/scheduleRouter.js'
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -49,6 +51,10 @@ app.use('/api/v1/notes', authenticateUser, notesRouter)
 app.use('/api/v1/community', authenticateUser, communityRouter)
 app.use('/api/v1/lab', authenticateUser, labRouter)
 app.use('/api/v1/emergency', authenticateUser, emergencyRouter)
+app.use('/api/v1/insulin',authenticateUser, insulinRouter)
+app.use('/api/v1/schedule',authenticateUser, scheduleRouter)
+
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './public', 'index.html'));

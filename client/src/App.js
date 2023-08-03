@@ -16,6 +16,8 @@ import {
   Register,
   Food,
   Lab,
+  Insulin,
+  Schedule,
 } from "./components";
 import { action as registerAction } from "./components/Register";
 import { action as loginAction } from "./components/Login";
@@ -23,12 +25,14 @@ import { action as glucoseAction } from "./components/BGL";
 import { action as medicineAction } from "./components/Medicine";
 import { action as exerciseAction } from "./components/Exercise";
 import { action as foodAction } from "./components/Food";
+import { action as insulinAction } from "./components/Insulin";
 
 import { loader as dashboardLoader } from "./components/Dashboard";
 import { loader as glucoseLoader } from "./components/BGL";
 import { loader as medicineLoader } from "./components/Medicine";
 import { loader as exerciseLoader } from "./components/Exercise";
 import { loader as foodLoader } from "./components/Food";
+import { loader as insulinLoader } from "./components/Insulin";
 
 const router = createBrowserRouter([
   // {
@@ -88,6 +92,16 @@ const router = createBrowserRouter([
         element: <Food />,
         action: foodAction,
         loader: foodLoader,
+      },
+      {
+        path: "insulin",
+        element: <Insulin />,
+        action: insulinAction,
+        loader: insulinLoader,
+      },
+      {
+        path: "schedule",
+        element: <Schedule />,
       },
       {
         path: "lab",

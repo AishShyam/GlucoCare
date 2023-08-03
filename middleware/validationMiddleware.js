@@ -1,5 +1,5 @@
 import { body, param, validationResult } from 'express-validator'
-import { EXERCISE_TYPE, GLUCOSE_UNIT, LAB_TEST_TYPE, LAB_UNITS, MEAL_TAG, MEAL_TAG_FOOD, MEDICINE_UNIT } from '../utils/constants.js'
+import { EXERCISE_TYPE, GLUCOSE_UNIT, INSULIN_TYPE, LAB_TEST_TYPE, LAB_UNITS, MEAL_TAG, MEAL_TAG_FOOD, MEDICINE_UNIT } from '../utils/constants.js'
 import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors/customErrors.js'
 import Glucose from '../models/GlucoseModel.js'
 import User from '../models/UserModel.js';
@@ -10,6 +10,8 @@ import Notes from '../models/NotesModel.js'
 import Community from '../models/CommunityModel.js'
 import Lab from '../models/LabModel.js'
 import Emergency from '../models/EmergencyModel.js'
+import Insulin from '../models/InsulinModel.js'
+import Schedule from '../models/ScheduleModel.js'
 
 import mongoose from 'mongoose'
 
@@ -208,6 +210,34 @@ export const validateEmergencyIdParam = withValidationErrors([
   if (!emergencyValue) throw new NotFoundError(`no message value with id ${value}`)
   const isAdmin = req.user.role === 'admin'
   const isOwner = req.user.userId === emergencyValue.createdBy.toString()
+  if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route')
+})
+])
+
+export const validateInsulinInput = withValidationErrors([
+  body('insulinType').isIn(Object.values(INSULIN_TYPE)).withMessage('invalid type'),
+])
+
+export const validateInsulinIdParam = withValidationErrors([
+  param('id').custom(async (value, {req}) => {
+  const isValidId = mongoose.Types.ObjectId.isValid(value)
+  if (!isValidId) throw new BadRequestError('invalid MongoDB id')
+  const insulinValue = await Insulin.findById(value)
+  if (!insulinValue) throw new NotFoundError(`no message value with id ${value}`)
+  const isAdmin = req.user.role === 'admin'
+  const isOwner = req.user.userId === insulinValue.createdBy.toString()
+  if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route')
+})
+])
+
+export const validateScheduleIdParam = withValidationErrors([
+  param('id').custom(async (value, {req}) => {
+  const isValidId = mongoose.Types.ObjectId.isValid(value)
+  if (!isValidId) throw new BadRequestError('invalid MongoDB id')
+  const scheduleValue = await Schedule.findById(value)
+  if (!scheduleValue) throw new NotFoundError(`no message value with id ${value}`)
+  const isAdmin = req.user.role === 'admin'
+  const isOwner = req.user.userId === scheduleValue.createdBy.toString()
   if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route')
 })
 ])

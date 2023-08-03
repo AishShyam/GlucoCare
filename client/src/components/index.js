@@ -17,5 +17,8 @@ export { default as Dashboard } from './Dashboard';
 export { default as Landing } from './Landing';
 export { default as Food } from './Food'
 export { default as Lab } from './Lab'
+export { default as Insulin } from './Insulin'
+export { default as Schedule } from './Schedule'
+
 
 

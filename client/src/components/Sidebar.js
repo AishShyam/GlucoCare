@@ -10,6 +10,8 @@ import CommunityLogo from '../assets/discussion.png';
 import NotepadLogo from '../assets/notepad.png'
 import FoodLogo from '../assets/cutlery.png'
 import LabLogo from '../assets/blood-test.png'
+import InsulinLogo from '../assets/syringe.png'
+import ScheduleLogo from '../assets/schedule.png'
 import { useState } from 'react';
 
 function Sidebar() {
@@ -57,6 +59,15 @@ function Sidebar() {
                             Medicine
                         </NavText>
                     </NavItem>
+                    <NavItem eventKey="insulin" active={selectedItem === "insulin"}>
+                        <NavIcon>
+                            {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
+                            <img src={InsulinLogo} width="30px" alt=""/>
+                        </NavIcon>
+                        <NavText>
+                            Medicine
+                        </NavText>
+                    </NavItem>
                     <NavItem eventKey="exercise" active={selectedItem === "exercise"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
@@ -91,6 +102,15 @@ function Sidebar() {
                         </NavIcon>
                         <NavText>
                             Emergency
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="schedule" active={selectedItem === "schedule"}>
+                        <NavIcon>
+                            {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
+                            <img src={ScheduleLogo} width="30px" alt=""/>
+                        </NavIcon>
+                        <NavText>
+                            Schedule
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="notepad" active={selectedItem === "notepad"}>

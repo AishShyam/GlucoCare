@@ -7,7 +7,7 @@ import CarbsLogo from "../assets/low-carb-diet.png";
 import CalorieLogo from "../assets/meal.png";
 import MedicineLogo from "../assets/medicine2.png";
 import LabLogo from "../assets/blood-sample.png";
-import DiabetesLogo from "../assets/diabetes3.png"
+import DiabetesLogo from "../assets/diabetes3.png";
 
 export const loader = async () => {
   try {
@@ -48,6 +48,18 @@ export const loader3 = async () => {
 export const loader4 = async () => {
   try {
     const data = await axios.get("/api/v1/lab/latest");
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+export const loader5 = async () => {
+  try {
+    const data = await axios.get("/api/v1/schedule/latest");
     console.log(data);
     return data;
   } catch (error) {
@@ -118,7 +130,9 @@ const Dashboard = () => {
   return (
     <>
       <div className="blg--component">
-      <div className="title"><img src={DiabetesLogo} width="40px" alt=""/> Welcome to GlucoCare</div>
+        <div className="title">
+          <img src={DiabetesLogo} width="40px" alt="" /> Welcome to GlucoCare
+        </div>
         <div className="container border">
           <div className="dashboard">
             <h5 className="app--color--text">Latest Readings:</h5>

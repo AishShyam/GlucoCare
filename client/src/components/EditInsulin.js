@@ -10,13 +10,12 @@ export const action = async (event, id) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
   const data = {
-    medicineName: formData.get("medicineName"),
-    dosage: formData.get("dosage"),
-    medicineUnit: formData.get("medicineUnit"),
+    insulinType: formData.get("insulinType"),
+    insulinDosage: formData.get("insulinDosage"),
   };
   console.log("Data to be sent to API:", data);
   try {
-    await axios.patch(`/api/v1/medicine/${id}`, data);
+    await axios.patch(`/api/v1/insulin/${id}`, data);
     toast.success("Record Edited");
     window.location.reload();
   } catch (error) {
@@ -26,7 +25,7 @@ export const action = async (event, id) => {
   }
 };
 
-function EditMedicine(props) {
+function EditInsulin(props) {
   const id = props.id;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -42,42 +41,32 @@ function EditMedicine(props) {
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Medicine</Modal.Title>
+          <Modal.Title>Edit Insulin</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form method="post" onSubmit={handleEditSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label>Medicine Name</Form.Label>
+              <Form.Select
+                aria-label="Default select example"
+                name="insulinType"
+              >
+                <option>Rapid-Acting Insulin</option>
+                <option>Short-Acting (Regular) Insulin</option>
+                <option>Intermediate-Acting Insulin</option>
+                <option>Long-Acting Insulin</option>
+                <option>Other</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Dosage</Form.Label>
               <Form.Control
-                type="medicineName"
-                placeholder="enter medicine name"
-                name="medicineName"
+                type="insulinDosage"
+                placeholder="enter insulin dose in units"
+                name="insulinDosage"
                 autoFocus
                 required
               />
             </Form.Group>
-            <Form.Select aria-label="Default select example" name="dosage">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </Form.Select>
-            <br></br>
-            <Form.Select
-              aria-label="Default select example"
-              name="medicineUnit"
-            >
-              <option>unit</option>
-              <option>mg</option>
-              <option>g</option>
-            </Form.Select>
-            <br></br>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
@@ -91,4 +80,4 @@ function EditMedicine(props) {
   );
 }
 
-export default EditMedicine;
+export default EditInsulin;

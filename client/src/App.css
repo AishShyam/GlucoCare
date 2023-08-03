@@ -103,6 +103,7 @@
 .blg--component {
   text-align: center;
   margin-top: 5%;
+  margin: 0 auto;
   padding-left: 80px;
   padding-right: 30px;
 }
@@ -199,4 +200,12 @@
 
 .table--container {
   background-color: white;
+}
+
+.appointment {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
