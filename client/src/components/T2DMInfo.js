@@ -279,6 +279,18 @@ function T2DMInfo() {
                   monitor blood sugar levels, review treatment plans, and assess
                   for any potential complications
                 </Accordion.Body>
+                <Accordion.Item className="bold">
+                  Foot Care
+                </Accordion.Item>
+                <Accordion.Body>
+                  <ul>
+                    <li>Check feet every day</li>
+                    <li>Watch out cutting nails</li>
+                    <li>Make sure footwear fits</li>
+                    <li>Use moisturising cream every day</li>
+                    <li>Do not use blades or corn plasters</li>
+                  </ul>
+                </Accordion.Body>
               </ul>
               <div className="small-text">
                 Source:

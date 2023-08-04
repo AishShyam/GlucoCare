@@ -483,7 +483,7 @@ export const faqJson = [
     question:
       "How often should the person with type 2 diabetes visit their healthcare provider, and what should I do to prepare for appointments?",
     answer:
-      "Regular check-ups, at least once or twice a year, are essential. Prepare a list of questions and concerns before the appointment and bring their blood sugar records if applicable.",
+      "This varies from case to case, check with your healthcare provider. Prepare a list of questions and concerns before the appointment and bring their blood sugar records if applicable.",
   },
   {
     question:
