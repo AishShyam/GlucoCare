@@ -61,110 +61,112 @@ function Schedule() {
 
   return (
     <>
-      <div className="blg--component">
-        <div className="title">Appointment Tracker</div>
-        <div className="container">
-          {scheduleData.length > 0 ? (
-            <div className="scroll">
-              <table className="table table-responsive w-100 d-block d-md-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Appointment Title</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Appointment Type</th>
-                    <th scope="col">Note</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {scheduleData.map((item) => (
-                    <tr key={item.createdAt}>
-                      <td>{item.date}</td>
-                      <td>{item.appointmentTitle}</td>
-                      <td>{item.location}</td>
-                      <td>{item.appointmentType}</td>
-                      <td>{item.note}</td>
-                      <td>
-                        <EditSchedule id={item._id} />
-                        <DeleteSchedule id={item._id} />
-                      </td>
+      <div className="element">
+        <div className="blg--component">
+          <div className="title">Appointment Tracker</div>
+          <div className="container">
+            {scheduleData.length > 0 ? (
+              <div className="scroll">
+                <table className="table table-responsive w-100 d-block d-md-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Appointment Title</th>
+                      <th scope="col">Address</th>
+                      <th scope="col">Appointment Type</th>
+                      <th scope="col">Note</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p>No schedule readings yet</p>
-          )}
+                  </thead>
+                  <tbody>
+                    {scheduleData.map((item) => (
+                      <tr key={item.createdAt}>
+                        <td>{item.date}</td>
+                        <td>{item.appointmentTitle}</td>
+                        <td>{item.location}</td>
+                        <td>{item.appointmentType}</td>
+                        <td>{item.note}</td>
+                        <td>
+                          <EditSchedule id={item._id} />
+                          <DeleteSchedule id={item._id} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p>No schedule readings yet</p>
+            )}
+          </div>
+          <br />
+          <Button className="button" type="submit" onClick={handleShow}>
+            <img src={AddLogo} width="25px" alt="" /> Add new record
+          </Button>
         </div>
-        <br />
-        <Button className="button" type="submit" onClick={handleShow}>
-          <img src={AddLogo} width="25px" alt="" /> Add new record
-        </Button>
-      </div>
-      <div className="container">
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add Medicine</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form method="post" onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
-                <Form.Label>Date</Form.Label>
-                <Form.Control type="date" name="date" />
-                <Form.Control type="time" name="time" />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Appointment Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Appointment Title"
-                  name="appointmentTitle"
-                  autoFocus
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Address</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  placeholder="Enter Address"
-                  name="location"
-                  autoFocus
-                  required
-                />
-              </Form.Group>
-              <Form.Select
-                aria-label="Default select example"
-                name="appointmentType"
-              >
-                <option>Doctor's Appointment</option>
-                <option>Diabetes Education Class</option>
-                <option>Lab Tests</option>
-                <option>Other</option>
-              </Form.Select>
-              <Form.Group className="mb-3">
-                <Form.Label>Note</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  placeholder="Enter Note"
-                  name="note"
-                  autoFocus
-                  required
-                />
-              </Form.Group>
-              <br />
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary" type="submit">
-                Add Record
-              </Button>
-            </Form>
-          </Modal.Body>
-        </Modal>
+        <div className="container">
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add Medicine</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Appointment Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Appointment Title"
+                    name="appointmentTitle"
+                    autoFocus
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter Address"
+                    name="location"
+                    autoFocus
+                    required
+                  />
+                </Form.Group>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="appointmentType"
+                >
+                  <option>Doctor's Appointment</option>
+                  <option>Diabetes Education Class</option>
+                  <option>Lab Tests</option>
+                  <option>Other</option>
+                </Form.Select>
+                <Form.Group className="mb-3">
+                  <Form.Label>Note</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter Note"
+                    name="note"
+                    autoFocus
+                    required
+                  />
+                </Form.Group>
+                <br />
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" type="submit">
+                  Add Record
+                </Button>
+              </Form>
+            </Modal.Body>
+          </Modal>
+        </div>
       </div>
     </>
   );

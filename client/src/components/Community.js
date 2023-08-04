@@ -56,36 +56,38 @@ function Community() {
 
   return (
     <>
-      <div className="blg--component">
-        <div className="title">Community Forum</div>
-        <div className="container">
-          <div className="scroll">
-            <ListGroup>
-              {communityData.map((item) => (
-                <ListGroupItem key={item.createdAt}>
-                  <Card>
-                    <Card.Body>
-                      <b>{item.name}:</b> {item.message}
-                    </Card.Body>
-                  </Card>
-                </ListGroupItem>
-              ))}
-            </ListGroup>
+      <div className="element">
+        <div className="blg--component">
+          <div className="title">Community Forum</div>
+          <div className="container">
+            <div className="scroll">
+              <ListGroup>
+                {communityData.map((item) => (
+                  <ListGroupItem key={item.createdAt}>
+                    <Card>
+                      <Card.Body>
+                        <b>{item.name}:</b> {item.message}
+                      </Card.Body>
+                    </Card>
+                  </ListGroupItem>
+                ))}
+              </ListGroup>
+            </div>
           </div>
-        </div>
-        <br></br>
-        <div className="container">
-          <Form method="post" onSubmit={handleSubmit}>
-            <Form.Control
-              className="me-auto"
-              placeholder="Add your message here..."
-              name="message"
-            />
-            <br></br>
-            <Button className="button" type="submit">
-              <img src={sendLogo} width="25px" alt="" /> Send Message
-            </Button>
-          </Form>
+          <br></br>
+          <div className="container">
+            <Form method="post" onSubmit={handleSubmit}>
+              <Form.Control
+                className="me-auto"
+                placeholder="Add your message here..."
+                name="message"
+              />
+              <br></br>
+              <Button className="button" type="submit">
+                <img src={sendLogo} width="25px" alt="" /> Send Message
+              </Button>
+            </Form>
+          </div>
         </div>
       </div>
     </>

@@ -66,56 +66,58 @@ function Notepad() {
 
   return (
     <>
-      <div className="blg--component">
-        <div className="title">Notepad</div>
-        <div className="container">
-          <div className="flex--notepad">
-            {notesData.map((item) => (
-              <Card style={{ width: "18rem" }} key={item.createdAt}>
-                <Card.Title>{item.title}</Card.Title>
-                <Card.Body>
-                  <Card.Text>{item.text}</Card.Text>
-                  <EditNote id={item._id} />
-                  <DeleteNote id={item._id} />
-                </Card.Body>
-              </Card>
-            ))}
+      <div className="element">
+        <div className="blg--component">
+          <div className="title">Notepad</div>
+          <div className="container">
+            <div className="flex--notepad">
+              {notesData.map((item) => (
+                <Card style={{ width: "18rem" }} key={item.createdAt}>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Body>
+                    <Card.Text>{item.text}</Card.Text>
+                    <EditNote id={item._id} />
+                    <DeleteNote id={item._id} />
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
           </div>
+          <br></br>
+          <Button className="button" type="submit" onClick={handleShow}>
+            <img src={AddLogo} width="25px" alt="" /> Add new note
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add Notes</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="title"
+                    placeholder="enter title"
+                    name="title"
+                    autoFocus
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Text</Form.Label>
+                  <Form.Control as="textarea" rows={3} required name="text" />
+                </Form.Group>
+                <br></br>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" type="submit">
+                  Add Record
+                </Button>
+              </Form>
+            </Modal.Body>
+          </Modal>
         </div>
-        <br></br>
-        <Button className="button" type="submit" onClick={handleShow}>
-          <img src={AddLogo} width="25px" alt="" /> Add new note
-        </Button>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add Notes</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form method="post" onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  type="title"
-                  placeholder="enter title"
-                  name="title"
-                  autoFocus
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Text</Form.Label>
-                <Form.Control as="textarea" rows={3} required name="text" />
-              </Form.Group>
-              <br></br>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary" type="submit">
-                Add Record
-              </Button>
-            </Form>
-          </Modal.Body>
-        </Modal>
       </div>
     </>
   );

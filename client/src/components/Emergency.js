@@ -69,45 +69,46 @@ function Emergency() {
   };
   return (
     <>
-      <div className="blg--component">
-        <div className="title">Emergency Information</div>
-        <div className="container">
-          <Card>
-            <Card.Header>Medical Information Summary</Card.Header>
-            {emergencyData && (
-              <Card.Body>
-                <p>
-                  <strong>Full Name:</strong> {emergencyData.name}
-                </p>
-                <p>
-                  <strong>Date of Birth:</strong> {emergencyData.dob}
-                </p>
-                <p>
-                  <strong>Blood Type:</strong> {emergencyData.bloodType}
-                </p>
-                <p>
-                  <strong>Allergies:</strong> {emergencyData.allergies}
-                </p>
-                <p>
-                  <strong>Medical Conditions:</strong>{" "}
-                  {emergencyData.medicalConditions}
-                </p>
-                <p>
-                  <strong>Medications:</strong>{" "}
-                  {emergencyData.currentMedication}
-                </p>
-                <p>
-                  <strong>Emergency Contacts:</strong> {emergencyData.contact}
-                </p>
-              </Card.Body>
-            )}
-          </Card>
-          <br></br>
-          <Button className="button" type="submit" onClick={handleShow}>
-            <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical
-            Information
-          </Button>
-          {/* <Button className="button2">
+      <div className="element">
+        <div className="blg--component">
+          <div className="title">Emergency Information</div>
+          <div className="container">
+            <Card>
+              <Card.Header>Medical Information Summary</Card.Header>
+              {emergencyData && (
+                <Card.Body>
+                  <p>
+                    <strong>Full Name:</strong> {emergencyData.name}
+                  </p>
+                  <p>
+                    <strong>Date of Birth:</strong> {emergencyData.dob}
+                  </p>
+                  <p>
+                    <strong>Blood Type:</strong> {emergencyData.bloodType}
+                  </p>
+                  <p>
+                    <strong>Allergies:</strong> {emergencyData.allergies}
+                  </p>
+                  <p>
+                    <strong>Medical Conditions:</strong>{" "}
+                    {emergencyData.medicalConditions}
+                  </p>
+                  <p>
+                    <strong>Medications:</strong>{" "}
+                    {emergencyData.currentMedication}
+                  </p>
+                  <p>
+                    <strong>Emergency Contacts:</strong> {emergencyData.contact}
+                  </p>
+                </Card.Body>
+              )}
+            </Card>
+            <br></br>
+            <Button className="button" type="submit" onClick={handleShow}>
+              <img src={AddLogo} width="25px" alt="" /> Add/Edit Medical
+              Information
+            </Button>
+            {/* <Button className="button2">
           {emergencyData.contact && (
             <a href={`tel:${emergencyData.contact}`}>
               <img src={callLogo} width="25px" alt="" /> Call Emergency Number
@@ -115,102 +116,109 @@ function Emergency() {
           )}
           </Button> */}
 
-          {emergencyData ? (
-            <Button className="button2">
-              <a href={`tel:${emergencyData.contact}`}>
+            {emergencyData ? (
+              <Button className="button2">
+                <a href={`tel:${emergencyData.contact}`}>
+                  <img src={callLogo} width="25px" alt="" /> Call Emergency
+                  Number
+                </a>
+              </Button>
+            ) : (
+              <Button
+                className="button2"
+                onClick={() =>
+                  alert("Update emergency number by adding Medical Information")
+                }
+              >
                 <img src={callLogo} width="25px" alt="" /> Call Emergency Number
-              </a>
-            </Button>
-          ) : (
-            <Button className="button2" onClick={() => alert("Update emergency number by adding Medical Information")}>
-              <img src={callLogo} width="25px" alt="" /> Call Emergency Number
-            </Button>
-          )}
+              </Button>
+            )}
 
-          {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Add/Edit Medical Information</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Form method="post" onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Full Name</Form.Label>
-                  <Form.Control
-                    type="name"
-                    placeholder="Enter Full Name"
-                    name="name"
-                    autoFocus
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Date of Birth</Form.Label>
-                  <Form.Control type="date" name="dob" />
-                </Form.Group>
-                <Form.Select
-                  aria-label="Default select example"
-                  name="bloodType"
-                >
-                  <option>A+</option>
-                  <option>A-</option>
-                  <option>B+</option>
-                  <option>B-</option>
-                  <option>AB+</option>
-                  <option>AB-</option>
-                  <option>O+</option>
-                  <option>O-</option>
-                </Form.Select>
-                <Form.Group className="mb-3">
-                  <Form.Label>Allergies</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    placeholder="Enter allergies of the person you care for"
-                    rows={3}
-                    required
-                    name="allergies"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Medical Conditions</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    placeholder="Enter medical conditions of the person you care for"
-                    rows={3}
-                    required
-                    name="medicalConditions"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Medications</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    placeholder="Enter all the current medication the person you care for takes"
-                    rows={3}
-                    required
-                    name="currentMedication"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Emergency Contact</Form.Label>
-                  <Form.Control
-                    type="contact"
-                    placeholder="Enter Emergency Contact Number"
-                    name="contact"
-                    autoFocus
-                    required
-                  />
-                </Form.Group>
-                <br></br>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" type="submit">
-                  Add Record
-                </Button>
-              </Form>
-            </Modal.Body>
-          </Modal>
+            {/* <Button><a href='tel:{emergencyData.contact}'>Emergency Call</a></Button> */}
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Add/Edit Medical Information</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form method="post" onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Full Name</Form.Label>
+                    <Form.Control
+                      type="name"
+                      placeholder="Enter Full Name"
+                      name="name"
+                      autoFocus
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Date of Birth</Form.Label>
+                    <Form.Control type="date" name="dob" />
+                  </Form.Group>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="bloodType"
+                  >
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                  </Form.Select>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Allergies</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      placeholder="Enter allergies of the person you care for"
+                      rows={3}
+                      required
+                      name="allergies"
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Medical Conditions</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      placeholder="Enter medical conditions of the person you care for"
+                      rows={3}
+                      required
+                      name="medicalConditions"
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Medications</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      placeholder="Enter all the current medication the person you care for takes"
+                      rows={3}
+                      required
+                      name="currentMedication"
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Emergency Contact</Form.Label>
+                    <Form.Control
+                      type="contact"
+                      placeholder="Enter Emergency Contact Number"
+                      name="contact"
+                      autoFocus
+                      required
+                    />
+                  </Form.Group>
+                  <br></br>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" type="submit">
+                    Add Record
+                  </Button>
+                </Form>
+              </Modal.Body>
+            </Modal>
+          </div>
         </div>
       </div>
     </>
