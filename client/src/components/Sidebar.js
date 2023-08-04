@@ -95,15 +95,6 @@ function Sidebar() {
                             Lab
                         </NavText>
                     </NavItem>
-                    <NavItem eventKey="emergency" active={selectedItem === "emergency"}>
-                        <NavIcon>
-                            {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
-                            <img src={EmergencyLogo} width="30px" alt=""/>
-                        </NavIcon>
-                        <NavText>
-                            Emergency
-                        </NavText>
-                    </NavItem>
                     <NavItem eventKey="schedule" active={selectedItem === "schedule"}>
                         <NavIcon>
                             {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
@@ -111,6 +102,15 @@ function Sidebar() {
                         </NavIcon>
                         <NavText>
                             Schedule
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="emergency" active={selectedItem === "emergency"}>
+                        <NavIcon>
+                            {/* <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} /> */}
+                            <img src={EmergencyLogo} width="30px" alt=""/>
+                        </NavIcon>
+                        <NavText>
+                            Emergency
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="notepad" active={selectedItem === "notepad"}>
