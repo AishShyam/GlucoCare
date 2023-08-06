@@ -30,6 +30,18 @@ export const action = async (event) => {
   try {
     await axios.post("/api/v1/glucose", data);
     toast.success("Record Added");
+    if(data.glucose < 70 && data.unit === "mg/dL"){
+      alert("Glucose Level Too Low!")
+    }
+    if(data.glucose < 3.9 && data.unit === "mmol/L"){
+      alert("Glucose Level Too Low!")
+    }
+    if(data.glucose > 180 && data.unit === "mg/dL"){
+      alert("Glucose Level Too High!")
+    }
+    if(data.glucose > 7.8 && data.unit === "mmol/L"){
+      alert("Glucose Level Too High!")
+    }
     window.location.reload();
   } catch (error) {
     toast.error(error?.response?.data?.msg);
