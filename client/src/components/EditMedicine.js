@@ -9,7 +9,12 @@ import EditLogo from "../assets/edit.png";
 export const action = async (event, id) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
   const data = {
+    date: formData.get("date"),
     medicineName: formData.get("medicineName"),
     dosage: formData.get("dosage"),
     medicineUnit: formData.get("medicineUnit"),
@@ -46,6 +51,11 @@ function EditMedicine(props) {
         </Modal.Header>
         <Modal.Body>
           <Form method="post" onSubmit={handleEditSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Date</Form.Label>
+              <Form.Control type="date" name="date" />
+              <Form.Control type="time" name="time" />
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Medicine Name</Form.Label>
               <Form.Control

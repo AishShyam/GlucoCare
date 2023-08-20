@@ -71,9 +71,9 @@ function Schedule() {
                   <thead>
                     <tr>
                       <th scope="col">Date</th>
-                      <th scope="col">Appointment Title</th>
+                      <th scope="col">Title</th>
                       <th scope="col">Address</th>
-                      <th scope="col">Appointment Type</th>
+                      <th scope="col">Type</th>
                       <th scope="col">Note</th>
                     </tr>
                   </thead>
@@ -106,7 +106,7 @@ function Schedule() {
         <div className="container">
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Add Medicine</Modal.Title>
+              <Modal.Title>Add Appointment</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>

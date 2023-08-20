@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { MEAL_TAG_FOOD } from '../utils/constants.js'
 
 const FoodSchema = new mongoose.Schema({
+    date: Date,
     carbs: Number,
     fats: Number,
     proteins: Number,

@@ -12,7 +12,12 @@ import AddLogo from "../assets/add-button.png";
 export const action = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
   const data = {
+    date: formData.get("date"),
     exerciseType: formData.get("exerciseType"),
     duration: formData.get("duration"),
     comment: formData.get("comment"),
@@ -61,6 +66,7 @@ function Excercise() {
       const formattedData = data.data.exerciseData.map((item) => ({
         ...item,
         createdAt: new Date(item.createdAt).toLocaleString(),
+        date: new Date(item.date).toLocaleString(),
       }));
       setExerciseData(formattedData);
       // setExerciseData(data.data.exerciseData);
@@ -89,7 +95,7 @@ function Excercise() {
                   <tbody>
                     {exerciseData.map((item) => (
                       <tr key={item.createdAt}>
-                        <td>{item.createdAt}</td>
+                        <td>{item.date}</td>
                         <td>{item.exerciseType}</td>
                         <td>{item.duration}</td>
                         <td>{item.comment}</td>
@@ -118,6 +124,11 @@ function Excercise() {
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
                 <Form.Select
                   aria-label="Default select example"
                   name="exerciseType"

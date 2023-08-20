@@ -38,7 +38,7 @@ function Sidebar() {
                             <img src={HomeLogo} width="30px" alt=""/>
                         </NavIcon>
                         <NavText>
-                            Home
+                            Dashboard
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="bgl" active={selectedItem === "bgl"}>
@@ -65,7 +65,7 @@ function Sidebar() {
                             <img src={InsulinLogo} width="30px" alt=""/>
                         </NavIcon>
                         <NavText>
-                            Medicine
+                            Insulin
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="exercise" active={selectedItem === "exercise"}>
@@ -83,7 +83,7 @@ function Sidebar() {
                             <img src={FoodLogo} width="30px" alt=""/>
                         </NavIcon>
                         <NavText>
-                            Food
+                            Nutrition
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="lab" active={selectedItem === "lab"}>
@@ -92,7 +92,7 @@ function Sidebar() {
                             <img src={LabLogo} width="30px" alt=""/>
                         </NavIcon>
                         <NavText>
-                            Lab
+                            Lab Tests
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="schedule" active={selectedItem === "schedule"}>
@@ -101,7 +101,7 @@ function Sidebar() {
                             <img src={ScheduleLogo} width="30px" alt=""/>
                         </NavIcon>
                         <NavText>
-                            Schedule
+                            Appointment
                         </NavText>
                     </NavItem>
                     <NavItem eventKey="emergency" active={selectedItem === "emergency"}>

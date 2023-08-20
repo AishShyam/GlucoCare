@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { INSULIN_TYPE } from '../utils/constants.js';
 
 const InsulinSchema = new mongoose.Schema({
+    date: Date,
     insulinType: {
         type: String,
         enum: Object.values(INSULIN_TYPE),

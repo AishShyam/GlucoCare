@@ -12,7 +12,12 @@ import AddLogo from "../assets/add-button.png";
 export const action = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
   const data = {
+    date: formData.get("date"),
     medicineName: formData.get("medicineName"),
     dosage: formData.get("dosage"),
     medicineUnit: formData.get("medicineUnit"),
@@ -61,6 +66,7 @@ function Medicine() {
       const formattedData = data.data.medicineData.map((item) => ({
         ...item,
         createdAt: new Date(item.createdAt).toLocaleString(),
+        date: new Date(item.date).toLocaleString(),
       }));
       setMedicineData(formattedData);
     } catch (error) {
@@ -88,7 +94,7 @@ function Medicine() {
                   <tbody>
                     {medicineData.map((item) => (
                       <tr key={item.createdAt}>
-                        <td>{item.createdAt}</td>
+                        <td>{item.date}</td>
                         <td>{item.medicineName}</td>
                         <td>{item.dosage}</td>
                         <td>{item.medicineUnit}</td>
@@ -117,6 +123,11 @@ function Medicine() {
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Medicine Name</Form.Label>
                   <Form.Control

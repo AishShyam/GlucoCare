@@ -21,7 +21,13 @@ import {
 export const action = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
+
   const data = {
+    date: formData.get("date"),
     glucose: formData.get("glucose"),
     unit: formData.get("unit"),
     mealTag: formData.get("mealTag"),
@@ -30,17 +36,17 @@ export const action = async (event) => {
   try {
     await axios.post("/api/v1/glucose", data);
     toast.success("Record Added");
-    if(data.glucose < 70 && data.unit === "mg/dL"){
-      alert("Glucose Level Too Low!")
+    if (data.glucose < 70 && data.unit === "mg/dL") {
+      alert("Glucose Level Too Low!");
     }
-    if(data.glucose < 3.9 && data.unit === "mmol/L"){
-      alert("Glucose Level Too Low!")
+    if (data.glucose < 3.9 && data.unit === "mmol/L") {
+      alert("Glucose Level Too Low!");
     }
-    if(data.glucose > 180 && data.unit === "mg/dL"){
-      alert("Glucose Level Too High!")
+    if (data.glucose > 180 && data.unit === "mg/dL") {
+      alert("Glucose Level Too High!");
     }
-    if(data.glucose > 7.8 && data.unit === "mmol/L"){
-      alert("Glucose Level Too High!")
+    if (data.glucose > 7.8 && data.unit === "mmol/L") {
+      alert("Glucose Level Too High!");
     }
     window.location.reload();
   } catch (error) {
@@ -67,7 +73,7 @@ export const AreaChartComponent = (props) => {
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={props.glucoseData} margin={{ top: 50 }}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="createdAt" />
+        <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
         <Area
@@ -102,6 +108,7 @@ function BGL() {
       const formattedData = data.data.glucoseData.map((item) => ({
         ...item,
         createdAt: new Date(item.createdAt).toLocaleString(),
+        date: new Date(item.date).toLocaleString(),
       }));
       setGlucoseData(formattedData);
       // setGlucoseData(data.data.glucoseData);
@@ -116,39 +123,39 @@ function BGL() {
         <div className="blg--component">
           <div className="title">Blood Glucose Tracker</div>
           <div className="table--container">
-          <div className="container">
-            {glucoseData.length > 0 ? (
-              <div className="scroll">
-                <table class="table table-responsive w-100 d-block d-md-table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Date & Time</th>
-                      <th scope="col">Blood Glucose Level</th>
-                      <th scope="col">Unit</th>
-                      <th scope="col">Meal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {glucoseData.map((item) => (
-                      <tr key={item.createdAt}>
-                        {/* <td>{item.createdAt}</td> */}
-                        <td>{item.createdAt}</td>
-                        <td>{item.glucose}</td>
-                        <td>{item.unit}</td>
-                        <td>{item.mealTag}</td>
-                        <td>
-                          <Edit id={item._id} />
-                          <Delete id={item._id} />
-                        </td>
+            <div className="container">
+              {glucoseData.length > 0 ? (
+                <div className="scroll">
+                  <table className="table table-responsive w-100 d-block d-md-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date & Time</th>
+                        <th scope="col">Blood Glucose Level</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col">Meal</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <p>No glucose readings yet </p>
-            )}
-          </div>
+                    </thead>
+                    <tbody>
+                      {glucoseData.map((item) => (
+                        <tr key={item.createdAt}>
+                          {/* <td>{item.createdAt}</td> */}
+                          <td>{item.date}</td>
+                          <td>{item.glucose}</td>
+                          <td>{item.unit}</td>
+                          <td>{item.mealTag}</td>
+                          <td>
+                            <Edit id={item._id} />
+                            <Delete id={item._id} />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p>No glucose readings yet </p>
+              )}
+            </div>
           </div>
           <br></br>
           <Button className="button" type="submit" onClick={handleShow}>
@@ -165,6 +172,11 @@ function BGL() {
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Blood Glucose Value</Form.Label>
                   <Form.Control

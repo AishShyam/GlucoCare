@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import {MEDICINE_UNIT} from '../utils/constants.js';
 
 const MedicineSchema = new mongoose.Schema({
+    date: Date,
     medicineName: String,
     dosage:Number,
     medicineUnit:{

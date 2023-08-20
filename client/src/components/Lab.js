@@ -21,7 +21,12 @@ import {
 export const action = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
   const data = {
+    date: formData.get("date"),
     testType: formData.get("testType"),
     testResult: formData.get("testResult"),
     testUnit: formData.get("testUnit"),
@@ -55,7 +60,7 @@ export const AreaChartComponent = (props) => {
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={props.labData} margin={{ top: 50 }}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="createdAt" />
+        <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
         <Area
@@ -89,6 +94,7 @@ function Lab() {
       const formattedData = data.data.labData.map((item) => ({
         ...item,
         createdAt: new Date(item.createdAt).toLocaleString(),
+        date: new Date(item.date).toLocaleString(),
       }));
       setLabData(formattedData);
       //setLabData(data.data.labData);
@@ -117,7 +123,7 @@ function Lab() {
                   <tbody>
                     {labData.map((item) => (
                       <tr key={item.createdAt}>
-                        <td>{item.createdAt}</td>
+                        <td>{item.date}</td>
                         <td>{item.testType}</td>
                         <td>{item.testResult}</td>
                         <td>{item.testUnit}</td>
@@ -147,6 +153,11 @@ function Lab() {
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
                 <Form.Select
                   aria-label="Default select example"
                   name="testType"

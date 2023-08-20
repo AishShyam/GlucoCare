@@ -133,7 +133,7 @@ const Dashboard = () => {
         <div className="title">
           <img src={DiabetesLogo} width="40px" alt="" /> Welcome to GlucoCare
         </div>
-        <div className="container border">
+        
           <div className="dashboard">
             <h5 className="app--color--text">Latest Readings:</h5>
             <br></br>
@@ -199,7 +199,7 @@ const Dashboard = () => {
             </div>
           </div>
           <br></br>
-        </div>
+        
       </div>
     </>
   );

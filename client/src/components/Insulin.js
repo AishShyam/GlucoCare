@@ -12,7 +12,12 @@ import DeleteInsulin from "./DeleteInsulin";
 export const action = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
   const data = {
+    date: formData.get("date"),
     insulinType: formData.get("insulinType"),
     insulinDosage: formData.get("insulinDosage"),
   };
@@ -60,6 +65,7 @@ function Insulin() {
       const formattedData = data.data.insulinData.map((item) => ({
         ...item,
         createdAt: new Date(item.createdAt).toLocaleString(),
+        date: new Date(item.date).toLocaleString(),
       }));
       setInsulinData(formattedData);
     } catch (error) {
@@ -86,7 +92,7 @@ function Insulin() {
                   <tbody>
                     {insulinData.map((item) => (
                       <tr key={item.createdAt}>
-                        <td>{item.createdAt}</td>
+                        <td>{item.date}</td>
                         <td>{item.insulinType}</td>
                         <td>{item.insulinDosage} Units</td>
                         <td>
@@ -114,6 +120,11 @@ function Insulin() {
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Select
                     aria-label="Default select example"

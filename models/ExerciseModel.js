@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { EXERCISE_TYPE } from '../utils/constants.js'
 
 const ExerciseSchema = new mongoose.Schema({
+    date: Date,
     exerciseType: {
         type:String,
         enum:Object.values(EXERCISE_TYPE),

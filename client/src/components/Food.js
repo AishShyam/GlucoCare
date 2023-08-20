@@ -21,7 +21,12 @@ import {
 export const action = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
+  const date = formData.get("date");
+  const time = formData.get("time");
+  const combinedDateTime = `${date}T${time}`;
+  formData.set("date", combinedDateTime);
   const data = {
+    date: formData.get("date"),
     carbs: formData.get("carbs"),
     fats: formData.get("fats"),
     proteins: formData.get("proteins"),
@@ -57,7 +62,7 @@ export const AreaChartComponent = (props) => {
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={props.foodData} margin={{ top: 50 }}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="createdAt" />
+        <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
         <Area type="monotone" dataKey="carbs" stroke="#052e7e" fill="#052e7e" />
@@ -93,6 +98,7 @@ function Food() {
       const formattedData = data.data.foodData.map((item) => ({
         ...item,
         createdAt: new Date(item.createdAt).toLocaleString(),
+        date: new Date(item.date).toLocaleString(),
       }));
       setFoodData(formattedData);
       //setFoodData(data.data.foodData);
@@ -123,7 +129,7 @@ function Food() {
                   <tbody>
                     {foodData.map((item) => (
                       <tr key={item.createdAt}>
-                        <td>{item.createdAt}</td>
+                        <td>{item.date}</td>
                         <td>{item.carbs} g</td>
                         <td>{item.fats} g</td>
                         <td>{item.proteins} g</td>
@@ -155,6 +161,11 @@ function Food() {
             </Modal.Header>
             <Modal.Body>
               <Form method="post" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="date" name="date" />
+                  <Form.Control type="time" name="time" />
+                </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Carbs</Form.Label>
                   <Form.Control

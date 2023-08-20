@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { LAB_TEST_TYPE, LAB_UNITS } from '../utils/constants.js'
 
 const LabSchema = new mongoose.Schema({
+    date: Date,
     testType: {
         type:String,
         enum:Object.values(LAB_TEST_TYPE),

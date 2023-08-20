@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { GLUCOSE_UNIT, MEAL_TAG } from '../utils/constants.js';
 
 const GlucoseSchema = new mongoose.Schema({
+    date: Date,
     glucose:Number,
     unit:{
         type:String,

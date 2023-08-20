@@ -70,7 +70,7 @@ function Emergency() {
   return (
     <>
       <div className="element">
-        <div className="blg--component">
+        <div className="emergency--component">
           <div className="title">Emergency Information</div>
           <div className="container">
             <Card>

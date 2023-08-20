@@ -105,6 +105,14 @@
   margin-top: 5%;
   margin: 0 auto;
   padding-left: 80px;
+  padding-right: 20px;
+}
+
+.emergency--component {
+  text-align: center;
+  margin-top: 5%;
+  margin: 0 auto;
+  padding-left: 80px;
   padding-right: 30px;
 }
 
@@ -169,7 +177,9 @@
 }
 
 .dashboard {
+  padding-left: 20%;
   padding-top: 10px;
+  max-width: 80%;
 }
 
 .element {
