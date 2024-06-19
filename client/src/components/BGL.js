@@ -59,7 +59,7 @@ export const action = async (event) => {
 export const loader = async () => {
   try {
     const data = await axios.get("/api/v1/glucose");
-    console.log(data);
+    console.log("Check this", data);
     return data;
   } catch (error) {
     console.log(error);
